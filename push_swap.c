@@ -1,5 +1,4 @@
 #include "push_swap.h"
-
 /*create stack a & b*/
 	/*sort stack*/
 		/*sorting*/
@@ -10,69 +9,88 @@
 		//decide when finish  11 stack operation is finish
 	/**/
 
-s_list	*create_sb(s_list *stack_a)
+char	*parse_number(s_list *stack, char *nb)
 {
-	s_list	*stack;
-	size_t	i;
+	int	i;
+	int	n;
+	int	res;
 
+	res = 0;
 	i = 0;
-	stack = (s_list *)malloc(sizeof(s_list));
-	if (!stack)
-		return (NULL);
-	while (i < stack_a->size)
+	n = 1;
+	if (*nb < '0' || *nb > '9')
+		return (0);
+	if (*nb == '-')
+			n = -1;
+	while (*nb >= '0' && *nb <= '9')
 	{
-
+		res = (*nb - '0') + (res * 10);
+		nb++;
 	}
-	return ()
+	if (*nb == ' ')
+		nb++;
+	else if (*nb != '\0')
+		return (0);
+	stack->nb = res;
+	return (nb);
 }
 
-s_list	*create_sa(char *nb)
+s_list	*ft_newnode(void)
 {
 	s_list	*stack;
 
 	stack = (s_list *)malloc(sizeof(s_list));
 	if (!stack)
-		return (NULL);
-	while (*nb >= '0' && *nb <= '9' && *nb == ' ')
-	{
-		stack->nb = ft_atoi()
-	}
+		return (0);
+	stack->nb = 0;
+	stack->next = NULL;
 	return (stack);
 }
 
-int	sort_stack(s_list *stack_a)
+s_list	*create_stack(s_list *stack, char *nb)
 {
-	s_list	*stack_b;
+	s_list *current;
 
-	if (!stack_a)
+	stack = ft_newnode();
+	if (!stack)
 		return (0);
-	else
+	current = stack;
+	while (*nb != '\0')
 	{
-		stack_b = create_sb(stack_a);
-		if (!stack_b)
-			return (0);
+		nb = parse_number(current, nb);
+		if (!nb)
+		{
+			/*free stack*/
+			printf("Error\n");
+			return (NULL);
+		}
+		current->next = ft_newnode();
+		current = current->next;
 	}
-
-	return (0);
+	return (stack);
 }
-
 void	push_swap(char *nb)
 {
-	int	rt;
+	s_list	*sa;
+	s_list	*sb;
 
-	rt = sort_stack(create_sa(nb));
-	if (rt == 0)
+	if ((*nb < '0' || *nb > '9') && *nb != '-')
 	{
-		/*clear node function*/
+		printf("Error\n");
+		return ;
+	}
+	sa = create_stack(sa, nb);
+	if (!sa)
+	{
+		printf("Error\n");
 		return ;
 	}
 }
-
 //int	main(int argc, char **argv)
 int	main(void)
 {
 	char	nb[6] = "1 4 3";
-	printf("--- Input Number ---\n%s", nb);
+	printf("--- Input Number ---\n");
 	push_swap(nb);
 	return 0;
 }

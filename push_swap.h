@@ -11,10 +11,9 @@
 
 typedef struct l_list
 {
-	int	nb;
-	size_t	size;
+	int				nb;
 	struct l_list	*next;
-}				s_list;
+}					s_list;
 
 int	ft_atoi(const char *str);
 int	main(void);
