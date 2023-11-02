@@ -1,63 +1,106 @@
 #include "push_swap.h"
 
-static	int	check_long_long(long long res, char str, int n)
+///////////Form LIBFT///////////
+int	ft_lstsize(s_list *lst)
 {
-	if (n > 0)
+	int	count;
+
+	count = 0;
+	while (lst != NULL)
 	{
-		if (res == LLONG_MAX / 10 && (str - '0') > LLONG_MAX % 10)
-		{
-			return (-1);
-		}
-		else if (res > LLONG_MAX / 10)
-		{
-			return (-1);
-		}
+		count++;
+		lst = lst->next;
 	}
-	else if (n < 0)
+	return (count);
+}
+///////////////////////////////
+
+s_list	*create_stack_b(s_list *stack, int size)
+{
+	s_list	*current;
+
+	printf("size of b: %d\n", size);
+	stack = ft_newnode();
+	if (!stack)
+		return (0);
+	stack = current;
+	while (size > 0)
 	{
-		if (res == LLONG_MIN / 10 && (str - '0') > (LLONG_MIN % 10) * (-1))
+		current->next = ft_newnode();
+		current = current->next;
+		if (!current)
 		{
+			/*free stack*/
 			return (0);
 		}
-		else if (res < LLONG_MIN / 10)
-		{
-			return (0);
-		}
+		printf("sb -> %d &%p\n", current->nb, current);
+		size--;
 	}
-	return (1);
+	return (stack);
 }
 
-int	ft_atoi(const char *str)
+s_list	*create_stack(s_list *stack, char *nb)
 {
-	int			i;
-	int			n;
-	long long	res;
-	int			check;
+	s_list *current;
 
+	stack = ft_newnode();
+	if (!stack)
+		return (0);
+	current = stack;
+	while (*nb != '\0')
+	{
+		nb = parse_number(current, nb);
+		if (!nb)
+		{
+			/*free stack*/
+			return (NULL);
+		}
+		printf("sa -> %d &%p\n", current->nb, current);
+		if (*nb != '\0')
+		{
+			current->next = ft_newnode();
+			current = current->next;
+		}
+	}
+	return (stack);
+}
+
+s_list	*ft_newnode(void)
+{
+	s_list	*stack;
+
+	stack = (s_list *)malloc(sizeof(s_list));
+	if (!stack)
+		return (0);
+	stack->nb = 0;
+	stack->next = NULL;
+	return (stack);
+}
+char	*parse_number(s_list *stack, char *nb)
+{
+	int	i;
+	int	n;
+	int	res;
+
+	res = 0;
 	i = 0;
 	n = 1;
-	res = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
+	if (*nb < '0' || *nb > '9')
+		return (0);
+	if (*nb == '-')
 			n = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*nb >= '0' && *nb <= '9')
 	{
-		check = check_long_long(res, str[i], n);
-		if (check == -1 || check == 0)
-			return (check);
-		res = (str[i] - '0') + (res * 10);
-		i++;
+		res = (*nb - '0') + (res * 10);
+		nb++;
+		if (*nb == ' ')
+		{
+			nb++;
+			break;
+		}
 	}
-	return ((int)res * n);
-}
-
-int	main(void)
-{
-	printf("%d", ft_atoi("1 4 3"));
-	printf("%d", ft_atoi("4 3"));
+	if ((*nb <'0' || *nb > '9') && *nb != '\0')
+		return (0);
+	stack->nb = res;
+	return (nb);
 }

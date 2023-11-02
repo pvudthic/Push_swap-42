@@ -9,69 +9,7 @@
 		//decide when finish  11 stack operation is finish
 	/**/
 
-char	*parse_number(s_list *stack, char *nb)
-{
-	int	i;
-	int	n;
-	int	res;
 
-	res = 0;
-	i = 0;
-	n = 1;
-	if (*nb < '0' || *nb > '9')
-		return (0);
-	if (*nb == '-')
-			n = -1;
-	while (*nb >= '0' && *nb <= '9')
-	{
-		res = (*nb - '0') + (res * 10);
-		nb++;
-		if (*nb == ' ')
-		{
-			nb++;
-			break;
-		}
-	}
-	if ((*nb <'0' || *nb > '9') && *nb != '\0')
-		return (0);
-	stack->nb = res;
-	return (nb);
-}
-
-s_list	*ft_newnode(void)
-{
-	s_list	*stack;
-
-	stack = (s_list *)malloc(sizeof(s_list));
-	if (!stack)
-		return (0);
-	stack->nb = 0;
-	stack->next = NULL;
-	return (stack);
-}
-
-s_list	*create_stack(s_list *stack, char *nb)
-{
-	s_list *current;
-
-	stack = ft_newnode();
-	if (!stack)
-		return (0);
-	current = stack;
-	while (*nb != '\0')
-	{
-		nb = parse_number(current, nb);
-		if (!nb)
-		{
-			/*free stack*/
-			return (NULL);
-		}
-		printf("-> %d \n", current->nb);
-		current->next = ft_newnode();
-		current = current->next;
-	}
-	return (stack);
-}
 void	push_swap(char *nb)
 {
 	s_list	*sa;
@@ -88,6 +26,13 @@ void	push_swap(char *nb)
 		printf("Error\n");
 		return ;
 	}
+	sb = create_stack_b(sb, ft_lstsize(sa));
+	if (!sb)
+	{
+		printf("Error\n");
+		return ;
+	}
+
 }
 //int	main(int argc, char **argv)
 int	main(void)
