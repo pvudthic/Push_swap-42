@@ -26,10 +26,13 @@ char	*parse_number(s_list *stack, char *nb)
 	{
 		res = (*nb - '0') + (res * 10);
 		nb++;
+		if (*nb == ' ')
+		{
+			nb++;
+			break;
+		}
 	}
-	if (*nb == ' ')
-		nb++;
-	else if (*nb != '\0')
+	if ((*nb <'0' || *nb > '9') && *nb != '\0')
 		return (0);
 	stack->nb = res;
 	return (nb);
@@ -61,9 +64,9 @@ s_list	*create_stack(s_list *stack, char *nb)
 		if (!nb)
 		{
 			/*free stack*/
-			printf("Error\n");
 			return (NULL);
 		}
+		printf("-> %d \n", current->nb);
 		current->next = ft_newnode();
 		current = current->next;
 	}
