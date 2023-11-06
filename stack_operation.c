@@ -12,6 +12,18 @@ void	display_stack(s_list *stack, char name)
 }
 ////////////////////////////////
 
+void	ft_clearstack(s_list *stack)
+{
+	s_list	*current_stack;
+
+	while (stack != NULL)
+	{
+		current_stack = stack->next;
+		free(stack);
+		stack = current_stack;
+	}
+}
+
 s_list	*new_stack(void)
 {
 	s_list	*stack;
@@ -45,7 +57,7 @@ s_list	*create_stack_b(int size)
 			current_stack->next = new_stack();
 			if (!current_stack->next)
 			{
-				/*clear stack*/
+				ft_clearstack(head_stack);
 				return (NULL);
 			}
 			current_stack = current_stack->next;
@@ -126,7 +138,7 @@ s_list	*create_stack(char *str)
 	}
 	if (head_stack->error == 1)
 		{
-			/*clear stack*/
+			ft_clearstack(head_stack);
 			return (0);
 		}
 	head_stack->size = size;

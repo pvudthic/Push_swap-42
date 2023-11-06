@@ -22,7 +22,7 @@ typedef struct l_list
 void	display_stack(s_list *stack, char name);
 //////////////////
 
-void	display_stack(s_list *stack, char name);
+void	ft_clearstack(s_list *stack);
 s_list	*new_stack(void);
 void	parse_number(s_list *head_stack, s_list *stack, char *str);
 s_list	*create_stack(char *str);
