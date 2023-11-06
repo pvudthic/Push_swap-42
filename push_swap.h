@@ -12,15 +12,21 @@
 typedef struct l_list
 {
 	int				nb;
-	int				size_a;
+	int				error;
+	int				str_index;
+	int				size;
 	struct l_list	*next;
 }					s_list;
 
-char	*parse_number(s_list *stack, char *nb);
-s_list	*create_stack_b(s_list *stack, int size);
-s_list	*create_stack(s_list *stack, char *nb);
-s_list	*ft_newnode(void);
-int	ft_lstsize(s_list *lst);
+///display stack///
+void	display_stack(s_list *stack, char name);
+//////////////////
+
+void	display_stack(s_list *stack, char name);
+s_list	*new_stack(void);
+void	parse_number(s_list *head_stack, s_list *stack, char *str);
+s_list	*create_stack(char *str);
+s_list	*create_stack_b(int size);
 int	main(void);
 //int	main(int argc, char **argv);
 
