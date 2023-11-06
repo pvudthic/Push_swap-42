@@ -12,16 +12,22 @@ void	display_stack(s_list *stack, char name)
 }
 ////////////////////////////////
 
-void	ft_clearstack(s_list *stack)
+s_list	*check_error(s_list *h_stack, int error)
 {
 	s_list	*current_stack;
 
-	while (stack != NULL)
+	if (error == 1)
 	{
-		current_stack = stack->next;
-		free(stack);
-		stack = current_stack;
+		while (h_stack != NULL)
+		{
+			current_stack = h_stack->next;
+			printf("\nfreeing.. nb: %d", h_stack->nb);
+			free(h_stack);
+			h_stack = current_stack;
+		}
+		return (NULL);
 	}
+	return (h_stack);
 }
 
 s_list	*new_stack(void)
@@ -34,113 +40,97 @@ s_list	*new_stack(void)
 	stack->nb = 0;
 	stack->error = 0;
 	stack->size = 0;
-	stack->str_index = 0;
+	stack->index = 0;
 	stack->next = NULL;
 	return (stack);
 }
 
-s_list	*create_stack_b(int size)
+s_list	*add_stack_b(int size)
 {
-	s_list	*head_stack;
+	s_list	*h_stack;
 	s_list	*current_stack;
 	int		i;
 
 	i = 1;
 	if (size > 0)
 	{
-		head_stack = new_stack();
-		if (!head_stack)
+		h_stack = new_stack();
+		if (!h_stack)
 			return (NULL);
-		current_stack = head_stack;
+		current_stack = h_stack;
 		while (i != size)
 		{
 			current_stack->next = new_stack();
 			if (!current_stack->next)
-			{
-				ft_clearstack(head_stack);
-				return (NULL);
-			}
+				return (check_error(h_stack, 1));
 			current_stack = current_stack->next;
 			i++;
 		}
 	}
-	return (head_stack);
+	return (h_stack);
 }
 
-void	parse_number(s_list *head_stack, s_list *stack, char *str)
+void	convert_string(s_list *h_stack, s_list *stack, char *str, int n, int i)
+{
+	int	res;
+
+	while (str[i] >= '0' && str[i] <= '9' && h_stack->error == 0)
+		res = (str[i++] - '0') + (res * 10);
+	if (str[i] != ' ' && str[i] != '\0')
+		h_stack->error = 1;
+	else if (str[i] == ' ' && ((str[i + 1] < '0' || str[i + 1] > '9') && str[i+1] != '-'))
+		h_stack->error = 1;
+	else if (str[i] == ' ')
+		i++;
+	if (h_stack->error != 1)
+	{
+		h_stack->index += i;
+		stack->nb = (res * n);
+	}
+}
+
+void	parse_number(s_list *h_stack, s_list *stack, char *str)
 {
 	int	n;
 	int	i;
-	int	res;
-	int	check;
 
 	n = 1;
 	i = 0;
-	res = 0;
-	//Check first character
-	if ((str[0] < '0' && str[0] > '9') && str[i] != '-')
-	{
-		printf("error first character");
-		head_stack->error = 1;
-		return ;
-	}
+	if ((str[0] < '0' || str[0] > '9') && str[i] != '-')
+		h_stack->error = 1;
 	if (str[i] == '-')
 	{
+		if ((str[i + 1] < '0' || str[i + 1] > '9'))
+			h_stack->error = 1;
 		n = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
-	}
-	// Not a space and NULL-Terminated
-	if (str[i] != ' ' && str[i] != '\0')
-	{
-		printf("Not a space and NULL-Terminated it a \n%c\n", str[i]);
-		head_stack->error = 1;
-	}
-	// If it space next character must be number or negative sign
-	else if (str[i] == ' ' && ((str[i + 1] < '0' || str[i + 1] > '9') && str[i+1] != '-'))
-		head_stack->error = 1;
-	// If it just a space
-	else if (str[i] == ' ')
-		i++;
-	head_stack->str_index += i;
-	stack->nb = (res * n);
+	convert_string(h_stack, stack, str + i, n, i);
 }
 
 s_list	*create_stack(char *str)
 {
-	s_list	*head_stack;
+	s_list	*h_stack;
 	s_list	*current_stack;
 	int		size;
-	int		i;
 
-	i = 0;
 	size = 1;
-	head_stack = new_stack();
-	if (!head_stack)
+	h_stack = new_stack();
+	if (!h_stack)
 		return (NULL);
-	current_stack = head_stack;
-	while (str[i] != '\0' && head_stack->error == 0)
+	current_stack = h_stack;
+	while (str[h_stack->index] != '\0' && h_stack->error == 0)
 	{
-		parse_number(head_stack, current_stack, str + i);
-		i = head_stack->str_index;
-		if (str[i] != '\0' && head_stack->error == 0)
+		parse_number(h_stack, current_stack, str + h_stack->index);
+		if (str[h_stack->index] != '\0' && h_stack->error == 0)
 		{
 			current_stack->next = new_stack();
 			if (!current_stack->next)
-				head_stack->error = 1;
+				h_stack->error = 1;
 			current_stack = current_stack->next;
 			size++;
 		}
 	}
-	if (head_stack->error == 1)
-		{
-			ft_clearstack(head_stack);
-			return (0);
-		}
-	head_stack->size = size;
-	return (head_stack);
+	h_stack->size = size;
+	return (check_error(h_stack, h_stack->error));
 }
