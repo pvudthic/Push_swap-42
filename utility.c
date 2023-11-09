@@ -14,7 +14,7 @@ void	display_stack(s_list *stack)
 	}
 }
 
-static void	free_stack_AB(s_list *stack)
+void	free_stack_AB(s_list *stack)
 {
 	a_list	*tmp_a;
 	b_list	*tmp_b;
@@ -25,7 +25,6 @@ static void	free_stack_AB(s_list *stack)
 		printf("freeing.. A\n");
 		while (stack->a)
 		{
-			/*printf addr check if all free successfully*/
 			tmp_a = stack->a;
 			stack->a = stack->a->next;
 			free(tmp_a);
@@ -46,7 +45,10 @@ static void	free_stack_AB(s_list *stack)
 
 void	error_exit(s_list *stack)
 {
-	free_stack_AB(stack);
+	if (stack)
+	{
+		free_stack_AB(stack);
+	}
 	printf("Error\n");
 	exit(0);
 }
