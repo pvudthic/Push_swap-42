@@ -2,50 +2,11 @@
 
 void	push_swap(char *nb)
 {
-	s_list	*sa;
-	s_list	*sb;
-	int		i;
-
-	i = 0;
-	if (!nb)
-	{
-		printf("Error");
-		return ;
-	}
-	sa = create_stack(nb);
-	if (!sa)
-		return ;
-	sb = add_stack_b(sa->size);
-	if (!sb)
-		return ;
-	display_stack(sa, 'a');
-	display_stack(sb, 'b');
+	
 }
-//int	main(int argc, char **argv)
-int	main(void)
+int	main(int argc, char **argv)
 {
-	//char	nb[1000] = ""; /*1*/
-	//char	*nb = NULL; /*2*/
-	//char	nb[1000] = "100"; /*3*/
-	//char	nb[1000] = "a"; /*4*/
-	//char	nb[1000] = " 100 1000"; /*5*/
-	//char	nb[1000] = "  100 1000"; /*5*/
-	//char	nb[1000] = "100 1000 "; /*6*/
-	//char	nb[1000] = "100 1000  "; /*6*/
-	// char	nb[1000] = " 100 1000 "; /*7*/
-	//char	nb[1000] = "  100 1000  "; /*7*/
-	char	nb[1000] = "100  1000"; /*8*/
-	//char	nb[1000] = "1 2123 37290374 4 5"; /*8*/
-	//char	nb[1000] = "100a"; /*9*/
-	//char	nb[1000] = "100b"; /*9*/
-	//char	nb[1000] = "- 100"; /*10*/
-	//char	nb[1000] = "- 100"; /*10*/
-	//char	nb[1000] = "-100 - -10000"; /*10*/
-	//char	nb[1000] = "-100 - 1 0000"; /*10*/
-	//char	nb[1000] = "Phanuwat Vudthichai Rangsu n"; /*11*/
 
-	printf("--- Input Number ---\n");
-	push_swap(nb);
 	return 0;
 }
 
