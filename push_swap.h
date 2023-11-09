@@ -32,6 +32,8 @@ typedef struct l_list
 void	display_stack(s_list *stack);
 ////////////////////////
 
+void	create_stack(int nb, s_list *stack);
+int		parse_number(char *str, s_list *stack);
 void	error_exit(s_list *stack);
 int		main(int argc, char **argv);
 

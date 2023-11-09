@@ -19,17 +19,21 @@ static void	free_stack_AB(s_list *stack)
 	a_list	*tmp_a;
 	b_list	*tmp_b;
 
+	printf("free Stack\n");
 	if (stack->a)
 	{
+		printf("freeing.. A\n");
 		while (stack->a)
 		{
+			/*printf addr check if all free successfully*/
 			tmp_a = stack->a;
 			stack->a = stack->a->next;
 			free(tmp_a);
 		}
 	}
-	if (stack->a)
+	if (stack->b)
 	{
+		printf("freeing.. B\n");
 		while (stack->b)
 		{
 			tmp_b = stack->b;
