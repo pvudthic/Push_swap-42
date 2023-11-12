@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 		create_sa_sb(nb, stack);
 		argc--;
 	}
-	display_stack(stack);
+	sort(stack);
 	return (0);
 }
 
