@@ -2,7 +2,7 @@
 
 void	do_sa(t_s *stack)
 {
-
+	return ;
 }
 
 void	do_sb(t_s *stack)
