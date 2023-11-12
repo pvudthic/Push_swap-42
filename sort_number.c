@@ -3,4 +3,5 @@
 void	sort(t_s *stack)
 {
 	display_stack(stack);
+	return ;
 }
