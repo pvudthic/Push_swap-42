@@ -2,12 +2,14 @@
 
 void	display_stack(t_list *stack)
 {
+	printf("----- a -----\n");
 	while (stack->a)
 	{
 		printf("- %d -\n", stack->a->nb);
 		stack->a = stack->a->next;
 	}
 	printf("\n\n");
+	printf("----- b -----\n");
 	while (stack->b)
 	{
 		printf("- %d -\n", stack->b->nb);

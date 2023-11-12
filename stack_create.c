@@ -5,13 +5,9 @@ static void	first_stack_ab(int nb, t_list *stack)
 	stack->a = (t_stack *)malloc(sizeof(stack->a));
 	if (!stack->a)
 		error_exit(stack);
-	stack->b = (t_stack *)malloc(sizeof(stack->b));
-	if (!stack->b)
-		error_exit(stack);
+	stack->b = NULL;
 	stack->a->nb = nb;
-	stack->b->nb = 0;
 	stack->a->next = NULL;
-	stack->b->next = NULL;
 }
 
 t_list	*create_stack(int argc, char *first_input_arg)
@@ -35,7 +31,6 @@ t_list	*create_stack(int argc, char *first_input_arg)
 void	create_sa_sb(int nb, t_list *stack)
 {
 	t_stack	*new_a;
-	t_stack	*new_b;
 
 	if (!stack->a && !stack->b)
 		first_stack_ab(nb, stack);
@@ -44,15 +39,9 @@ void	create_sa_sb(int nb, t_list *stack)
 		new_a = (t_stack *)malloc(sizeof(stack->a));
 		if (!new_a)
 			error_exit(stack);
-		new_b = (t_stack *)malloc(sizeof(stack->b));
-		if (!new_b)
-			error_exit(stack);
 		new_a->nb = nb;
-		new_b->nb = 0;
 		new_a->next = stack->a;
-		new_b->next = stack->b;
 		stack->a = new_a;
-		stack->b = new_b;
 	}
 }
 
