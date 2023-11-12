@@ -13,49 +13,49 @@ typedef struct a_list
 {
 	int				nb;
 	struct a_list	*next;
-}	t_sa;
+}	t_stack;
 
-typedef struct b_list
-{
-	int				nb;
-	struct b_list	*next;
-}	t_sb;
+// typedef struct b_list
+// {
+// 	int				nb;
+// 	struct b_list	*next;
+// }	t_sb;
 
 typedef struct l_list
 {
 	int		error;
-	t_sa	*a;
-	t_sb	*b;
-}	t_s;
+	t_stack	*a;
+	t_stack	*b;
+}	t_list;
 
 /*         display stack         */
-void	display_stack(t_s *stack);
+void	display_stack(t_list *stack);
 
 /*        stack operation        */
-void	do_sa(t_s *stack);
-void	do_sb(t_s *stack);
-void	do_ss(t_s *stack);
-void	do_pa(t_s *stack);
-void	do_pb(t_s *stack);
-void	do_ra(t_s *stack);
-void	do_rb(t_s *stack);
-void	do_rr(t_s *stack);
-void	do_rra(t_s *stack);
-void	do_rrb(t_s *stack);
-void	do_rrr(t_s *stack);
+void	do_sa(t_list *stack);
+void	do_sb(t_list *stack);
+void	do_ss(t_list *stack);
+void	do_pa(t_list *stack);
+void	do_pb(t_list *stack);
+void	do_ra(t_list *stack);
+void	do_rb(t_list *stack);
+void	do_rr(t_list *stack);
+void	do_rra(t_list *stack);
+void	do_rrb(t_list *stack);
+void	do_rrr(t_list *stack);
 
 /*            sorting            */
-void	sort(t_s *stack);
+void	sort(t_list *stack);
 
 /*         create stack         */
-void	create_sa_sb(int nb, t_s *stack);
-t_s		*create_stack(int argc, char *first_input_arg);
-int		parse_number(char *str, t_s *stack);
+void	create_sa_sb(int nb, t_list *stack);
+t_list	*create_stack(int argc, char *first_input_arg);
+int		parse_number(char *str, t_list *stack);
 
 /*           utility           */
-void	free_stack_ab(t_s *stack);
-void	check_duplicate(int nb, t_sa *stack_a, t_s *stack);
-void	error_exit(t_s *stack);
+void	free_stack_ab(t_list *stack);
+void	check_duplicate(int nb, t_stack *stack_a, t_list *stack);
+void	error_exit(t_list *stack);
 
 /*             main            */
 int		main(int argc, char **argv);

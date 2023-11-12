@@ -3,7 +3,7 @@
 int	main(int argc, char **argv)
 {
 	int	nb;
-	t_s	*stack;
+	t_list	*stack;
 
 	if (argc > 0)
 	{

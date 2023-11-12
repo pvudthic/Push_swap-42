@@ -1,22 +1,23 @@
 #include "push_swap.h"
 
-void	display_stack(t_s *stack)
+void	display_stack(t_list *stack)
 {
 	while (stack->a)
 	{
-		printf("sa: %d\n", stack->a->nb);
+		printf("- %d -\n", stack->a->nb);
 		stack->a = stack->a->next;
 	}
+	printf("\n\n");
 	while (stack->b)
 	{
-		printf("sb: %d\n", stack->b->nb);
+		printf("- %d -\n", stack->b->nb);
 		stack->b = stack->b->next;
 	}
 }
 
-void	check_duplicate(int nb, t_sa *stack_a, t_s *stack)
+void	check_duplicate(int nb, t_stack *stack_a, t_list *stack)
 {
-	t_sa	*head_stack;
+	t_stack	*head_stack;
 
 	head_stack = stack_a;
 	while (head_stack)
@@ -30,10 +31,10 @@ void	check_duplicate(int nb, t_sa *stack_a, t_s *stack)
 	}
 }
 
-void	free_stack_ab(t_s *stack)
+void	free_stack_ab(t_list *stack)
 {
-	t_sa	*tmp_a;
-	t_sb	*tmp_b;
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
 
 	printf("free Stack\n");
 	if (stack->a)
@@ -59,7 +60,7 @@ void	free_stack_ab(t_s *stack)
 	free(stack);
 }
 
-void	error_exit(t_s *stack)
+void	error_exit(t_list *stack)
 {
 	if (stack)
 	{
