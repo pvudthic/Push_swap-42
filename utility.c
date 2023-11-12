@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	display_stack(s_list *stack)
+void	display_stack(t_s *stack)
 {
 	while (stack->a)
 	{
@@ -14,10 +14,26 @@ void	display_stack(s_list *stack)
 	}
 }
 
-void	free_stack_AB(s_list *stack)
+void	check_duplicate(int nb, t_sa *stack_a, t_s *stack)
 {
-	a_list	*tmp_a;
-	b_list	*tmp_b;
+	t_sa	*head_stack;
+
+	head_stack = stack_a;
+	while (head_stack)
+	{
+		if (nb == head_stack->nb)
+		{
+			printf("number is duplicate\n");
+			error_exit(stack);
+		}
+		head_stack = head_stack->next;
+	}
+}
+
+void	free_stack_ab(t_s *stack)
+{
+	t_sa	*tmp_a;
+	t_sb	*tmp_b;
 
 	printf("free Stack\n");
 	if (stack->a)
@@ -43,11 +59,11 @@ void	free_stack_AB(s_list *stack)
 	free(stack);
 }
 
-void	error_exit(s_list *stack)
+void	error_exit(t_s *stack)
 {
 	if (stack)
 	{
-		free_stack_AB(stack);
+		free_stack_ab(stack);
 	}
 	printf("Error\n");
 	exit(0);

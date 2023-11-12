@@ -1,11 +1,11 @@
 #include "push_swap.h"
 
-static void	first_stack_AB(int nb, s_list *stack)
+static void	first_stack_ab(int nb, t_s *stack)
 {
-	stack->a = (a_list *)malloc(sizeof(stack->a));
+	stack->a = (t_sa *)malloc(sizeof(stack->a));
 	if (!stack->a)
-			error_exit(stack);
-	stack->b =(b_list *)malloc(sizeof(stack->b));
+		error_exit(stack);
+	stack->b = (t_sb *)malloc(sizeof(stack->b));
 	if (!stack->b)
 		error_exit(stack);
 	stack->a->nb = nb;
@@ -14,9 +14,9 @@ static void	first_stack_AB(int nb, s_list *stack)
 	stack->b->next = NULL;
 }
 
-s_list	*create_stack(int argc, char *first_input_arg)
+t_s	*create_stack(int argc, char *first_input_arg)
 {
-	s_list	*stack;
+	t_s	*stack;
 
 	stack = NULL;
 	if (argc == 2)
@@ -24,7 +24,7 @@ s_list	*create_stack(int argc, char *first_input_arg)
 		parse_number(first_input_arg, stack);
 		exit(0);
 	}
-	stack = (s_list *)malloc(sizeof(s_list));
+	stack = (t_s *)malloc(sizeof(t_s));
 	if (!stack)
 		error_exit(NULL);
 	stack->a = NULL;
@@ -32,19 +32,19 @@ s_list	*create_stack(int argc, char *first_input_arg)
 	return (stack);
 }
 
-void	create_sa_sb(int nb, s_list *stack)
+void	create_sa_sb(int nb, t_s *stack)
 {
-	a_list	*new_a;
-	b_list	*new_b;
+	t_sa	*new_a;
+	t_sb	*new_b;
 
 	if (!stack->a && !stack->b)
-		first_stack_AB(nb, stack);
+		first_stack_ab(nb, stack);
 	else
 	{
-		new_a = (a_list *)malloc(sizeof(stack->a));
+		new_a = (t_sa *)malloc(sizeof(stack->a));
 		if (!new_a)
 			error_exit(stack);
-		new_b = (b_list *)malloc(sizeof(stack->b));
+		new_b = (t_sb *)malloc(sizeof(stack->b));
 		if (!new_b)
 			error_exit(stack);
 		new_a->nb = nb;
@@ -56,7 +56,7 @@ void	create_sa_sb(int nb, s_list *stack)
 	}
 }
 
-int	parse_number(char *str, s_list *stack)
+int	parse_number(char *str, t_s *stack)
 {
 	int			neg;
 	long long	res;
@@ -80,5 +80,5 @@ int	parse_number(char *str, s_list *stack)
 			error_exit(stack);
 		str++;
 	}
-	return (int)(res * neg);
+	return ((int)(res * neg));
 }

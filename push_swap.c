@@ -1,25 +1,9 @@
 #include "push_swap.h"
 
-void	check_duplicate(int	nb, a_list *stack_a, s_list *stack)
-{
-	a_list	*head_stack;
-
-	head_stack = stack_a;
-	while (head_stack)
-	{
-		if (nb == head_stack->nb)
-		{
-			printf("number is duplicate\n");
-			error_exit(stack);
-		}
-		head_stack = head_stack->next;
-	}
-}
-
 int	main(int argc, char **argv)
 {
-	int		nb;
-	s_list	*stack;
+	int	nb;
+	t_s	*stack;
 
 	if (argc > 0)
 	{
@@ -37,7 +21,7 @@ int	main(int argc, char **argv)
 		argc--;
 	}
 	display_stack(stack);
-	return 0;
+	return (0);
 }
 
 //Error condition for input
