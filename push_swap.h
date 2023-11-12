@@ -15,12 +15,6 @@ typedef struct a_list
 	struct a_list	*next;
 }	t_stack;
 
-// typedef struct b_list
-// {
-// 	int				nb;
-// 	struct b_list	*next;
-// }	t_sb;
-
 typedef struct l_list
 {
 	int		error;
