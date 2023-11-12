@@ -2,18 +2,22 @@
 
 void	display_stack(t_list *stack)
 {
+	t_stack	*current_a;
+	t_stack	*current_b;
+
+	current_a = stack->a;
+	current_b = stack->b;
 	printf("----- a -----\n");
-	while (stack->a)
+	while (current_a)
 	{
-		printf("- %d -\n", stack->a->nb);
-		stack->a = stack->a->next;
+		printf("- %d -\n", current_a->nb);
+		current_a = current_a->next;
 	}
-	printf("\n\n");
 	printf("----- b -----\n");
-	while (stack->b)
+	while (current_b)
 	{
-		printf("- %d -\n", stack->b->nb);
-		stack->b = stack->b->next;
+		printf("- %d -\n", current_b->nb);
+		current_b = current_b->next;
 	}
 }
 
