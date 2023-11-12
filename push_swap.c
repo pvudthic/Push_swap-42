@@ -2,7 +2,7 @@
 
 int	main(int argc, char **argv)
 {
-	int	nb;
+	int		nb;
 	t_list	*stack;
 
 	if (argc > 0)
