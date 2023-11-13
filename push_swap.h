@@ -33,10 +33,9 @@ void	do_pa(t_list *stack);
 void	do_pb(t_list *stack);
 void	do_ra(t_list *stack);
 void	do_rb(t_list *stack);
-void	do_rr(t_list *stack);
 void	do_rra(t_list *stack);
 void	do_rrb(t_list *stack);
-void	do_rrr(t_list *stack);
+void	do_rr_rrr(t_list *stack, int mode);
 
 /*            sorting            */
 void	sort(t_list *stack);
