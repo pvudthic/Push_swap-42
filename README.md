@@ -5,6 +5,9 @@ Guide to be start
 - https://www.youtube.com/watch?v=OaG81sDEpVk
 - https://github.com/AdrianWR/push_swap
 - https://github.com/sisittu99/push_swap
+- https://github.com/beatrizdile/42sp-push_swap
+- https://github.com/Vikingu-del/42Projects/tree/main/42Projects
+- https://github.com/suspectedoceano/push_swap/tree/main/push_swap
 
 Tools
 - Visualizer : https://github.com/o-reo/push_swap_visualizer
