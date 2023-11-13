@@ -13,3 +13,6 @@ Tools
 - Visualizer : https://github.com/o-reo/push_swap_visualizer
 - Tester : https://github.com/LeoFu9487/push_swap_tester , https://github.com/izenynn/push_swap_tester
 - ETC : http://push-swap.site/
+
+Checklist
+- https://github.com/rizky/42-corrections/blob/master/push_swap.pdf
