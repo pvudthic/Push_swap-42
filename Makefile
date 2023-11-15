@@ -5,8 +5,10 @@ FLAGS = -Wall -Werror -Wextra
 SRC =	push_swap.c \
 		sort_number.c \
 		stack_create.c \
-		stack_reverse.c \
-		stack_swap_push.c \
+		swap.c \
+		push.c \
+		rotate.c \
+		reverse_rotate.c \
 		utility.c
 
 OBJ = $(SRC:.c=.o)
