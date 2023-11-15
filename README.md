@@ -16,3 +16,4 @@ Tools
 
 Checklist
 - https://github.com/rizky/42-corrections/blob/master/push_swap.pdf
+- https://github.com/rphlr/42-Evals/tree/ca1e946d9d5b3135182a7f5582c8437d1b7af185
