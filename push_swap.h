@@ -18,6 +18,16 @@ typedef struct a_list
 typedef struct l_list
 {
 	int		error;
+	int		size_a;
+	int		size_b;
+	int		is_odd;
+	int		pos_1;
+	int		pos_2;
+	int		pos_3;
+	int		pos_4;
+	/*merg_top_a = '0'*/
+	/*merg_top_b = '1'*/
+	int		merg;
 	t_stack	*a;
 	t_stack	*b;
 }	t_list;
@@ -40,6 +50,7 @@ void	do_rrr(t_list *stack);
 
 /*            sorting            */
 void	sort(t_list *stack);
+void	tiny_sort(t_list *stack);
 
 /*         create stack         */
 void	create_sa_sb(int nb, t_list *stack);
@@ -50,6 +61,10 @@ int		parse_number(char *str, t_list *stack);
 void	free_stack_ab(t_list *stack);
 void	check_duplicate(int nb, t_stack *stack_a, t_list *stack);
 void	error_exit(t_list *stack);
+
+/*stack utility*/
+int		last_num(t_stack *stack);
+int		stack_size(t_list *stack, char name);
 
 /*             main            */
 int		main(int argc, char **argv);

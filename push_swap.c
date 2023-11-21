@@ -5,6 +5,19 @@ int	main(int argc, char **argv)
 	int		nb;
 	t_list	*stack;
 
+	/* hard coding for input*/
+	/*6 8 5 10 2 4 9 7 1 3*/
+	argv[1] = "6";
+	argv[2] = "8";
+	argv[3] = "5";
+	argv[4] = "10";
+	argv[5] = "2";
+	argv[6] = "4";
+	argv[7] = "9";
+	argv[8] = "7";
+	argv[9] = "1";
+	argv[10] = "3";
+	argc = 7;
 	if (argc > 0)
 	{
 		if (argc == 1)

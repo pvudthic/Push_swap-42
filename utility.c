@@ -1,26 +1,5 @@
 #include "push_swap.h"
 
-void	display_stack(t_list *stack)
-{
-	t_stack	*current_a;
-	t_stack	*current_b;
-
-	current_a = stack->a;
-	current_b = stack->b;
-	printf("----- a -----\n");
-	while (current_a)
-	{
-		printf("- %d -\n", current_a->nb);
-		current_a = current_a->next;
-	}
-	printf("----- b -----\n");
-	while (current_b)
-	{
-		printf("- %d -\n", current_b->nb);
-		current_b = current_b->next;
-	}
-}
-
 void	check_duplicate(int nb, t_stack *stack_a, t_list *stack)
 {
 	t_stack	*head_stack;

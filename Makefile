@@ -4,7 +4,9 @@ FLAGS = -Wall -Werror -Wextra
 
 SRC =	push_swap.c \
 		sort_number.c \
+		tiny_sort.c \
 		stack_create.c \
+		stack_utility.c \
 		swap.c \
 		push.c \
 		rotate.c \
