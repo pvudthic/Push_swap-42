@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../../push_swap.h"
 
 void	check_duplicate(int nb, t_stack *stack_a, t_list *stack)
 {

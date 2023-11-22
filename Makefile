@@ -3,15 +3,15 @@ CC = cc
 FLAGS = -Wall -Werror -Wextra
 
 SRC =	push_swap.c \
-		sort_number.c \
-		tiny_sort.c \
-		stack_create.c \
-		stack_utility.c \
-		swap.c \
-		push.c \
-		rotate.c \
-		reverse_rotate.c \
-		utility.c
+		./src/sort/sort_number.c \
+		./src/sort/sort.c \
+		./src/stack/push.c \
+		./src/stack/reverse_rotate.c \
+		./src/stack/rotate.c \
+		./src/stack/stack_create.c \
+		./src/stack/swap.c \
+		./src/utility/utility.c \
+		./src/utility/stack_utility.c \
 
 OBJ = $(SRC:.c=.o)
 

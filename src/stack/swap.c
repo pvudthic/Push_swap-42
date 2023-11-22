@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../../push_swap.h"
 /*Cuation If there nothing doesn't do anything so we have to empty stack*/
 void	do_sa(t_list *stack)
 {

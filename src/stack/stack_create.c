@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../../push_swap.h"
 
 static void	first_stack_ab(int nb, t_list *stack)
 {

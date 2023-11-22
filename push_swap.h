@@ -43,7 +43,9 @@ void	do_rrr(t_list *stack);
 
 /*            sorting            */
 void	sort(t_list *stack);
-void	tiny_sort(t_list *stack);
+void	easy_swap(t_list *stack, int start);
+void	length_swap(t_list *stack, int start, int stop);
+
 
 /*         create stack         */
 void	create_sa_sb(int nb, t_list *stack);
