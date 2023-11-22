@@ -12,6 +12,7 @@
 typedef struct a_list
 {
 	int				nb;
+	int				index;
 	struct a_list	*next;
 }	t_stack;
 
@@ -20,14 +21,6 @@ typedef struct l_list
 	int		error;
 	int		size_a;
 	int		size_b;
-	int		is_odd;
-	int		pos_1;
-	int		pos_2;
-	int		pos_3;
-	int		pos_4;
-	/*merg_top_a = '0'*/
-	/*merg_top_b = '1'*/
-	int		merg;
 	t_stack	*a;
 	t_stack	*b;
 }	t_list;

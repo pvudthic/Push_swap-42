@@ -11,7 +11,7 @@ void	do_pa(t_list *stack)
 		tmp_stack->next = stack->a;
 		stack->a = tmp_stack;
 		printf("pa\n");
-		display_stack(stack);
+		//display_stack(stack);
 	}
 	else
 		return ;
@@ -28,7 +28,7 @@ void	do_pb(t_list *stack)
 		tmp_stack->next = stack->b;
 		stack->b = tmp_stack;
 		printf("pb\n");
-		display_stack(stack);
+		//display_stack(stack);
 	}
 	else
 		return ;

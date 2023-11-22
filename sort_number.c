@@ -1,144 +1,157 @@
 #include "push_swap.h"
 
-/*
-	compare 2 number
-	if top number < bottom on top
-		return 0
-	other wise
-		return 1
-*/
-int		compare_top(t_stack *stack)
+int	init_stack_index(t_stack *stack, int stop)
 {
-	int		prev;
-	int		main;
-	t_stack	*s_current;
+	t_stack	*current;
+	int		i;
 
-	s_current = stack;
-	prev = s_current->nb;
-	s_current =s_current->next;
-	main = s_current->nb;
-	if (prev < main)
-		return (0);
-	return (1);
+	i = 1;
+	current = stack;
+	while (i != stop + 1)
+	{
+		current->index = i;
+		i++;
+		if (current->next == NULL)
+			return (current->nb);
+		current = current->next;
+	}
+	return (current->nb);
 }
-void	create_pos_2(t_list *stack, int	total, int size)
+
+int		find_index(t_stack *stack, int pos)
+{
+	int		stop;
+	t_stack	*current;
+
+	stop = 1;
+	current = stack;
+	while (current)
+	{
+		if (current->nb == pos)
+			break;
+		stop++;
+		current = current->next;
+	}
+	return (stop);
+}
+
+void	easy_swap(t_list *stack, int start)
 {
 	int	i;
-	int	j;
 
-	j = total;
-	if (compare_top(stack->a) == 1)
-		do_sa(stack);
-	display_stack(stack);
-	while (j > 0)
+	i = start;
+	while (i - 1 > 0)
 	{
-		i = 0;
-		while (i++ < size)
-			do_pb(stack);
-		j--;
+		do_pb(stack);
+		i--;
 	}
-}
-
-void	create_pos_3(t_list *stack, int	total, int remain)
-{
-	int	i;
-	int	j;
-
-	if ((total * 2) == remain)
-		return ;
-	j = total;
-	while (j > 0)
+	do_sa(stack);
+	i = start;
+	while (i - 1 > 0)
 	{
-		if (compare_top(stack->a) == 1)
-			do_sa(stack);
-		i = 0;
-		while (i++ < 2)
-			do_ra(stack);
-		j--;
-	}
-}
-
-void	create_pos_4(t_list *stack, int	total, int size)
-{
-	int	i;
-	int	j;
-
-	j = total;
-	if (compare_top(stack->a) == 0)
-		do_sa(stack);
-	while (j > 0)
-	{
-		i = 0;
-		while (i++ < size)
-			do_pb(stack);
-		j--;
-	}
-}
-
-int	compare_num(int num1, int num2, int num3)
-{
-	if (num1 >= num2 && num1 >= num3)
-	{
-		return (1);
-	}
-	else if (num2 >= num1 && num2 >= num3)
-	{
-		return (2);
-	}
-	else
-	{
-		return (3);
-	}
-
-}
-
-void	merge_top_a(t_list *stack)
-{
-	int	pos_2;
-	int	pos_3;
-	int	pos_4;
-	int	do_operation;
-
-	pos_2 = last_num(stack->a);
-	pos_3 = stack->b->nb;
-	pos_4 = last_num(stack->b);
-	printf("num 1: %d num 2: %d num 3 : %d\n", pos_2, pos_3, pos_4);
-	do_operation = compare_num(pos_2, pos_3, pos_4);
-	if (do_operation == 1)
-		do_rra(stack);
-	else if (do_operation == 2)
 		do_pa(stack);
-	else if (do_operation == 3)
+		i--;
+	}
+}
+
+void	length_swap(t_list *stack, int start, int stop)
+{
+	int	i;
+
+	i = start;
+	while (i > 0)
+	{
+		do_pb(stack);
+		do_rb(stack);
+		i--;
+	}
+	i = stop;
+	while (i > 0)
+	{
+		do_pb(stack);
+		i--;
+	}
+	do_rrb(stack);
+	do_pa(stack);
+	do_rb(stack);
+	i = stop - 1;
+	while (i > 0)
+	{
+		do_pa(stack);
+		i--;
+	}
+	i = start;
+	while (i > 0)
 	{
 		do_rrb(stack);
 		do_pa(stack);
+		i--;
 	}
 }
 
-void	merge(t_list *stack, char position)
+void	swap_handle(t_list *stack, int start, int stop)
 {
-	if (position == '1')
+	if (stop == 1)
+		easy_swap(stack, start);
+	else
+		length_swap(stack, start, stop);
+}
+
+void	swap(t_list *stack, int pos, int target)
+{
+	int	start;
+	int	stop;
+
+	start = find_index(stack->a, target);
+	stop = find_index(stack->a, pos);
+	stop = stop - start;
+	//printf("stop %d start %d\n", stop, start);
+	swap_handle(stack, start, stop);
+	//display_stack(stack);
+}
+
+int		quickSort(t_list *stack, int pivot, int pos, int target)
+{
+	int		size;
+	t_stack	*marker;
+	t_stack	*current;
+
+	current = stack->a;
+	marker = NULL;
+	size = stack->size_a;
+	while (size > 0)
 	{
-		merge_top_a(stack);
+		pos = current->nb;
+		if (pos <= pivot)
+		{
+			//printf("%d <= %d\n", pos, pivot);
+			if (marker)
+				marker = marker->next;
+			else
+				marker = stack->a;
+			target = marker->nb;
+			if (pos != target)
+			{
+				printf("do swap %d <-> %d\n", pos, target);
+				swap(stack, pos, target);
+				display_stack(stack);
+			}
+		}
+		/*shifting section*/
+		size--;
+		current = current->next;
 	}
-}
-
-void	merge_sort(t_list *stack)
-{
+	printf("here");
+	init_stack_index(stack->a, stack->size_a);
 	display_stack(stack);
-	/*parse chunk in position*/
-	create_pos_4(stack, ((stack->size_a) / 2) / 3, 2);
-	create_pos_2(stack, ((stack->size_a) / 2) / 3, 2);
-	create_pos_3(stack, ((stack->size_a) / 2) / 3, stack_size(stack, 'a'));
-	display_stack(stack);
-	merge(stack, '1');
+	/*We should use recursive function*/
+	return (0);
 }
 
 void	sort(t_list *stack)
 {
 	stack_size(stack, 'a');
-	if (stack->size_a > 5)
-		merge_sort(stack);
-	else
-		tiny_sort(stack);
+	init_stack_index(stack->a, stack->size_a);
+	//display_stack(stack);
+	quickSort(stack, last_num(stack->a), 0, 0);
 }

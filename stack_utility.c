@@ -43,15 +43,15 @@ void	display_stack(t_list *stack)
 
 	current_a = stack->a;
 	current_b = stack->b;
-	printf("|--- a ---|  |--- b ---|\n");
+	printf("   |--- a ---|     |--- b ---|   \n");
 	while (current_a || current_b)
 	{
 		if (current_a)
-			printf("     %d	", current_a->nb);
+			printf("[%d]	%d		", current_a->index, current_a->nb);
 		else if (!current_a)
-			printf("      	");
+			printf("[ ]	 		");
 		if (current_b)
-			printf("	  %d     \n", current_b->nb);
+			printf("%d     [%d]\n", current_b->nb, current_b->index);
 		else if (!current_b)
 			printf("             \n");
 		if (current_a)
