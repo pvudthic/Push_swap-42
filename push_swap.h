@@ -20,6 +20,7 @@ typedef struct i_list
 	int				nb;
 	int				index;
 	int				sorted;
+	int				edge;
 	struct i_list	*next;
 }	t_index;
 
@@ -51,7 +52,7 @@ void	do_rrb(t_list *stack);
 void	do_rrr(t_list *stack);
 
 /*            sorting            */
-//void	sort(t_list *stack);
+void	sort(t_list *stack);
 
 /*         create stack         */
 void	initialize_index(t_list *stack);

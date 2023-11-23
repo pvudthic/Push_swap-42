@@ -43,6 +43,6 @@ int	main(int argc, char **argv)
 
 	stack = NULL;
 	stack = initialize_stack(stack, argc, argv);
-	//sort(stack);
+	sort(stack);
 	return (0);
 }

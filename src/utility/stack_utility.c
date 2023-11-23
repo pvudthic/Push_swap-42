@@ -48,20 +48,20 @@ void	display_stack(t_list *stack)
 	current_a = stack->a;
 	current_b = stack->b;
 	(void) i_b;
-	printf("|------- a --------|     |------- b --------|   \n");
-	printf("|  i		s  |     |  i		s   |\n");
-	printf("| [%d]		:%d |     |   		    |\n", i_a->index, i_a->sorted);
+	printf("|--------- a ------------|     |---------- b ------------|   \n");
+	printf("|  i	   v	  s    e |     |  i	   v	  s    e |\n");
+	printf("| [%d]	  	  :%d  :%d |     | [ ]	  	  :1  :1 |\n", i_a->index, i_a->sorted, i_a->edge);
 	i_a = i_a->next;
 	while (current_a || current_b)
 	{
 		if (current_a)
-			printf("| [%d]	 %d	:%d |     ", i_a->index, current_a->nb, i_a->sorted);
+			printf("| [%d]	   %d	  :%d  :%d |     ", i_a->index, current_a->nb, i_a->sorted, i_a->edge);
 		else if (!current_a)
-			printf("[ ]  	 		");
+			printf("| [ ]	    	  :   :  |     ");
 		if (current_b)
-			printf("%d     [i]\n", current_b->nb);
+			printf("| [ ]	   %d	  :   :  |\n", current_b->nb);
 		else if (!current_b)
-			printf("| [ ]	  	:   |\n");
+			printf("| [ ]	    	  :   :  |     \n");
 		if (current_a)
 		{
 			current_a = current_a->next;
@@ -70,5 +70,5 @@ void	display_stack(t_list *stack)
 		if (current_b)
 			current_b = current_b->next;
 	}
-	printf("|------------------|     |------------------|");
+	printf("|------------------------|     |-------------------------|\n");
 }

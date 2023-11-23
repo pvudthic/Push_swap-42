@@ -1,12 +1,14 @@
 #include "../../push_swap.h"
 
-t_index	*add_inner_index(t_list *stack, t_stack *stack_nb,  int i)
+/*
+	Use recursive function to create add back linked list
+	edge = header or footer
+	index = position in stack
+*/
+static t_index	*add_inner_index(t_list *stack, t_stack *stack_nb,  int i)
 {
 	t_index	*new_index;
-	/*
-		c_stack , c_index	: current node stack & current  node index
-		i 					: number of index
-	*/
+
 	if (!stack_nb)
 	{
 		return (NULL);
@@ -16,12 +18,16 @@ t_index	*add_inner_index(t_list *stack, t_stack *stack_nb,  int i)
 		error_exit(stack);
 	new_index->sorted = 0;
 	new_index->index = i;
+	if (i == 1 || !stack_nb->next)
+		new_index->edge = 1;
+	else
+		new_index->edge = 0;
 	i++;
 	new_index->next = add_inner_index(stack, stack_nb->next,  i);
 	return (new_index);
 }
 
-t_index *add_header_index(t_list *stack)
+static t_index *add_header_index(t_list *stack)
 {
 	t_index *new_index;
 
@@ -30,6 +36,7 @@ t_index *add_header_index(t_list *stack)
 		error_exit(stack);
 	new_index->index = 0;
 	new_index->sorted = 1;
+	new_index->edge = 1;
 	return (new_index);
 }
 
