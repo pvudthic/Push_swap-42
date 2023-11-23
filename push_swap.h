@@ -29,6 +29,7 @@ typedef struct l_list
 	int		error;
 	int		size_a;
 	int		size_b;
+	int		sa_start;
 	t_stack	*a;
 	t_stack	*b;
 	t_index	*index_a;

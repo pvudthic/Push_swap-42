@@ -10,6 +10,7 @@ void	do_pa(t_list *stack)
 		stack->b = stack->b->next;
 		tmp_stack->next = stack->a;
 		stack->a = tmp_stack;
+		stack->sa_start--;
 		printf("pa\n");
 		//display_stack(stack);
 	}
@@ -27,6 +28,7 @@ void	do_pb(t_list *stack)
 		stack->a = stack->a->next;
 		tmp_stack->next = stack->b;
 		stack->b = tmp_stack;
+		stack->sa_start++;
 		printf("pb\n");
 		//display_stack(stack);
 	}
