@@ -45,11 +45,18 @@ void	free_stack_ab(t_list *stack)
 	free(stack);
 }
 
+void	free_index_ab(t_list *stack)
+{
+	(void) stack;
+	printf("We handle free index in the future..");
+}
+
 void	error_exit(t_list *stack)
 {
 	if (stack)
 	{
 		free_stack_ab(stack);
+		free_index_ab(stack);
 	}
 	printf("Error\n");
 	exit(0);
