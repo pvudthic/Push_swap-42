@@ -12,9 +12,16 @@
 typedef struct a_list
 {
 	int				nb;
-	int				index;
 	struct a_list	*next;
 }	t_stack;
+
+typedef struct i_list
+{
+	int				nb;
+	int				index;
+	int				sorted;
+	struct i_list	*next;
+}	t_index;
 
 typedef struct l_list
 {
@@ -23,6 +30,8 @@ typedef struct l_list
 	int		size_b;
 	t_stack	*a;
 	t_stack	*b;
+	t_index	*index_a;
+	t_index	*index_b;
 }	t_list;
 
 /*         display stack         */
@@ -43,11 +52,9 @@ void	do_rrr(t_list *stack);
 
 /*            sorting            */
 void	sort(t_list *stack);
-void	easy_swap(t_list *stack, int start);
-void	length_swap(t_list *stack, int start, int stop);
-
 
 /*         create stack         */
+void	initialize_index(t_list *stack);
 void	create_sa_sb(int nb, t_list *stack);
 t_list	*create_stack(int argc, char *first_input_arg);
 int		parse_number(char *str, t_list *stack);

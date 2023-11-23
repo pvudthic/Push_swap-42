@@ -4,7 +4,6 @@ FLAGS = -Wall -Werror -Wextra
 
 SRC =	push_swap.c \
 		./src/sort/sort_number.c \
-		./src/sort/sort.c \
 		./src/stack/push.c \
 		./src/stack/reverse_rotate.c \
 		./src/stack/rotate.c \
@@ -12,6 +11,7 @@ SRC =	push_swap.c \
 		./src/stack/swap.c \
 		./src/utility/utility.c \
 		./src/utility/stack_utility.c \
+		./src/utility/stack_index.c
 
 OBJ = $(SRC:.c=.o)
 

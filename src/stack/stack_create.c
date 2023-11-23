@@ -10,24 +10,6 @@ static void	first_stack_ab(int nb, t_list *stack)
 	stack->a->next = NULL;
 }
 
-t_list	*create_stack(int argc, char *first_input_arg)
-{
-	t_list	*stack;
-
-	stack = NULL;
-	if (argc == 2)
-	{
-		parse_number(first_input_arg, stack);
-		exit(0);
-	}
-	stack = (t_list *)malloc(sizeof(t_list));
-	if (!stack)
-		error_exit(NULL);
-	stack->a = NULL;
-	stack->b = NULL;
-	return (stack);
-}
-
 void	create_sa_sb(int nb, t_list *stack)
 {
 	t_stack	*new_a;
@@ -70,4 +52,24 @@ int	parse_number(char *str, t_list *stack)
 		str++;
 	}
 	return ((int)(res * neg));
+}
+
+t_list	*create_stack(int argc, char *first_input_arg)
+{
+	t_list	*stack;
+
+	stack = NULL;
+	if (argc == 2)
+	{
+		parse_number(first_input_arg, stack);
+		exit(0);
+	}
+	stack = (t_list *)malloc(sizeof(t_list));
+	if (!stack)
+		error_exit(NULL);
+	stack->a = NULL;
+	stack->b = NULL;
+	stack->index_a = NULL;
+	stack->index_b = NULL;
+	return (stack);
 }
