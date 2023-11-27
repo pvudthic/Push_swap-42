@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+#include <stdbool.h>
 
 /// This should be deleted//
 # include <stdio.h>
@@ -68,6 +69,10 @@ void	error_exit(t_list *stack);
 /*stack utility*/
 int		last_num(t_stack *stack);
 int		stack_size(t_list *stack, char name);
+
+/*stack checker*/
+bool empty_b(t_list *stack);
+bool is_sort(t_list *stack);
 
 /*             main            */
 int		main(int argc, char **argv);

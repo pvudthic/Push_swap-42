@@ -9,6 +9,7 @@ SRC =	push_swap.c \
 		./src/stack/reverse_rotate.c \
 		./src/stack/rotate.c \
 		./src/stack/stack_create.c \
+		./src/stack/stack_checker.c \
 		./src/stack/swap.c \
 		./src/utility/utility.c \
 		./src/utility/stack_utility.c \
