@@ -1,54 +1,75 @@
 #include "../../push_swap.h"
 
-static void	display_start_index(t_index *i_a)
-{
-	int		tmp;
+#include <stdio.h>
+#include <unistd.h>
 
-	if (i_a->index > 0)
+static t_index *shift_index(t_index *index)
+{
+	if (!index)
+		return (NULL);
+	else
+		index = index->next;
+	return index;
+}
+
+static t_stack *shift_stack(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	else
+		stack = stack->next;
+	return stack;
+}
+
+t_stack	*display_stack(t_stack *stack, t_index *index, int start)
+{
+	if (stack != NULL && index->index >= start)
 	{
-		tmp = 0;
-		while (tmp < i_a->index)
-		{
-			printf("| [%d]	  	  :   :  |     | [ ]	  	  :1  :1 |\n", tmp);
-			tmp++;
-		}
+		printf("| [%d]", index->index);
+		printf("	 %d        |", stack->nb);
+		return (shift_stack(stack));
+	}
+	else
+	{
+		printf("| [%d]", index->index);
+		printf("	          |");
+		return (stack);
 	}
 }
 
-void	display_stack(t_list *stack)
+void	clear_screen(void)
 {
-	t_stack	*current_a;
-	t_stack	*current_b;
+	sleep(2);
+	printf("\033[H\033[J");
+}
+
+void	display(t_list *stack)
+{
+	t_stack *stack_a;
+	t_stack *stack_b;
 	t_index *i_a;
 	t_index *i_b;
 
-	i_a = stack_start_index(stack->index_a, stack_size(stack, 'a'), stack->index_size);
+	stack_a = stack->a;
+	stack_b = stack->b;
+	i_a = stack->index_a;
 	i_b = stack->index_b;
-	current_a = stack->a;
-	current_b = stack->b;
-	(void) i_b;
-	printf("|--------- a ------------|     |---------- b ------------|   \n");
-	printf("|  i	   v	  s    e |     |  i	   v	  s    e |\n");
-	display_start_index(i_a);
-	printf("| [%d]	  	  :%d  :%d |     | [ ]	  	  :1  :1 |\n", i_a->index, i_a->sorted, i_a->edge);
-	i_a = i_a->next;
-	while (current_a || current_b)
+	printf("|------  A  ------|   ");
+	printf("|-------  B  -------|\n");
+	printf("| i      n        |   ");
+	printf("| i       n         |\n");
+	printf("|-----------------|   |-------------------|\n");
+	printf("| [0]	          |   | [0]	          |\n");
+	i_a = shift_index(i_a);
+	i_b = shift_index(i_b);
+	while (i_a)
 	{
-		if (current_a)
-			printf("| [%d]	   %d	  :%d  :%d |     ", i_a->index, current_a->nb, i_a->sorted, i_a->edge);
-		else if (!current_a)
-			printf("| [ ]	    	  :   :  |     ");
-		if (current_b)
-			printf("| [ ]	   %d	  :   :  |\n", current_b->nb);
-		else if (!current_b)
-			printf("| [ ]	    	  :   :  |     \n");
-		if (current_a)
-		{
-			current_a = current_a->next;
-			i_a = i_a->next;
-		}
-		if (current_b)
-			current_b = current_b->next;
+		stack_a = display_stack(stack_a, i_a, stack->start_i_a);
+		printf("   ");
+		stack_b = display_stack(stack_b, i_b, stack->start_i_b);
+		printf("\n");
+		i_a = shift_index(i_a);
+		i_b = shift_index(i_b);
 	}
-	printf("|------------------------|     |-------------------------|\n");
+	printf("|-----------------|   |-------------------|\n");
 }

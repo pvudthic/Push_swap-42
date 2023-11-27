@@ -18,25 +18,25 @@ typedef struct a_list
 typedef struct i_list
 {
 	int				index;
-	int				sorted;
-	int				edge;
 	struct i_list	*next;
 }	t_index;
 
 typedef struct l_list
 {
-	int		error;
-	int		size_a;
-	int		size_b;
+	int		stack_a;
 	int		index_size;
+	int		start_i_a;
+	int		start_i_b;
 	t_stack	*a;
 	t_stack	*b;
 	t_index	*index_a;
 	t_index	*index_b;
+	t_index	*addr_start_a;
+	t_index	*addr_start_b;
 }	t_list;
 
 /*         display stack         */
-void	display_stack(t_list *stack);
+void	display(t_list *stack);
 
 /*        stack operation        */
 void	do_sa(t_list *stack);
@@ -68,16 +68,6 @@ void	error_exit(t_list *stack);
 /*stack utility*/
 int		last_num(t_stack *stack);
 int		stack_size(t_list *stack, char name);
-t_index	*stack_start_index(t_index *index, int stack_size, int index_size);
-void	to_the_top_a(t_list *stack, int start);
-
-/*complementary*/
-void	down_swap(t_list *stack, int target, int marker);
-void	up_swap(t_list *stack, int target, int marker);
-
-/*convert*/
-int		find_index(t_index *index, t_stack *stack, int nb);
-int		find_value(t_list *stack, int start);
 
 /*             main            */
 int		main(int argc, char **argv);
