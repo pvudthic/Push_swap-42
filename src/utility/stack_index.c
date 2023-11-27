@@ -47,5 +47,6 @@ void	initialize_index(t_list *stack)
 	stack_nb = stack->a;
 	stack->index_a = add_header_index(stack);
 	stack->index_a->next = add_inner_index(stack, stack_nb, 1);
+	stack->index_size = stack_size(stack, 'a');
 	display_stack(stack);
 }

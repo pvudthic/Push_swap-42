@@ -3,6 +3,9 @@ CC = cc
 FLAGS = -Wall -Werror -Wextra
 
 SRC =	push_swap.c \
+		./src/complement/swap_num.c \
+		./src/convert/convert.c \
+		./src/display/display.c \
 		./src/sort/sort_number.c \
 		./src/stack/push.c \
 		./src/stack/reverse_rotate.c \
