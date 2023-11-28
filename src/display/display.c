@@ -26,7 +26,7 @@ t_stack	*display_stack(t_stack *stack, t_index *index, int start)
 	if (stack != NULL && index->index >= start)
 	{
 		printf("| [%d]", index->index);
-		printf("	 %d        |", stack->nb);
+		printf("	 %d	  |", stack->nb);
 		return (shift_stack(stack));
 	}
 	else

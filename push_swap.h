@@ -25,6 +25,7 @@ typedef struct i_list
 typedef struct l_list
 {
 	int		stack_a;
+	int		pivot;
 	int		index_size;
 	int		start_i_a;
 	int		start_i_b;
