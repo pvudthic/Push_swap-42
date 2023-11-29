@@ -25,7 +25,6 @@ void	to_top_a(t_list *stack, int marker)
 	if (marker > 1)
 	{
 		do_pb(stack);
-		//display(stack);
 	}
 }
 
@@ -250,11 +249,11 @@ void	pull_back(t_list *stack)
 
 void	sort(t_list *stack)
 {
-	//display(stack);
 	stack->pivot = last_num(stack->a);
 	while (!is_sort(stack) && !empty_b(stack))
 	{
 		sort_base(stack);
+		//display(stack);
 		pull_back(stack);
 	}
 	//display(stack);
