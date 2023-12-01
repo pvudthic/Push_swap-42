@@ -22,7 +22,6 @@ t_list	*initialize_stack(t_list *stack, int argc, char **argv)
 	initialize_index(stack);
 	return (stack);
 }
-
 /*
 	Our problem is
 	1. Instruction is very unefficiency
