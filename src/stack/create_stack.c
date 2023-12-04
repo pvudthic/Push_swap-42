@@ -1,46 +1,24 @@
 #include "stack.h"
 
-static void	first_stack_ab(int nb, t_list *stack)
-{
-	stack->a = (t_stack *)malloc(sizeof(stack->a));
-	if (!stack->a)
-		error_exit(stack);
-	stack->b = NULL;
-	stack->a->nb = nb;
-	stack->a->next = NULL;
-}
-
-void	create_sa_sb(int nb, t_list *stack)
+void	mem_alloc(int nb, t_list *stack)
 {
 	t_stack	*new_a;
+	t_stack	*new_tmp;
 
-	if (!stack->a && !stack->b)
-		first_stack_ab(nb, stack);
-	else
-	{
-		new_a = (t_stack *)malloc(sizeof(stack->a));
-		if (!new_a)
-			error_exit(stack);
-		new_a->nb = nb;
-		new_a->next = stack->a;
-		stack->a = new_a;
-	}
-}
-
-void	check_duplicate(int nb, t_list *stack)
-{
-	t_stack	*head_stack;
-
-	head_stack = stack->a;
-	while (head_stack)
-	{
-		if (nb == head_stack->nb)
-		{
-			printf("number is duplicate\n");
-			error_exit(stack);
-		}
-		head_stack = head_stack->next;
-	}
+	new_a = (t_stack *)malloc(sizeof(stack->a));
+	if (!new_a)
+		error_exit(stack);
+	new_tmp = (t_stack *)malloc(sizeof(stack->tmp));
+	if (!new_tmp)
+		error_exit(stack);
+	new_a->nb = nb;
+	new_tmp->nb = nb;
+	new_a->true_pos = 0;
+	new_tmp->true_pos = 0;
+	new_a->next = stack->a;
+	new_tmp->next = stack->tmp;
+	stack->a = new_a;
+	stack->tmp = new_tmp;
 }
 
 int	parse_number(char *str, t_list *stack)
@@ -85,10 +63,10 @@ t_list	*create_stack(int argc, char *first_input_arg)
 		error_exit(NULL);
 	stack->a = NULL;
 	stack->b = NULL;
+	stack->tmp = NULL;
 	stack->index = NULL;
 	return (stack);
 }
-
 
 t_list	*init_stack(t_list *stack, int argc, char **argv)
 {
@@ -103,7 +81,7 @@ t_list	*init_stack(t_list *stack, int argc, char **argv)
 		nb = parse_number(argv[argc], stack);
 		if (stack->a)
 			check_duplicate(nb, stack);
-		create_sa_sb(nb, stack);
+		mem_alloc(nb, stack);
 		argc--;
 	}
 	initialize_index(stack);

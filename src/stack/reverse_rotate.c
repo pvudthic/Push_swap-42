@@ -6,7 +6,7 @@
 */
 void	do_rra(t_list *stack)
 {
-	t_stack *prev;
+	t_stack	*prev;
 	t_stack	*current;
 
 	if (stack->a == NULL || stack->a->next == NULL)
@@ -25,7 +25,7 @@ void	do_rra(t_list *stack)
 
 void	do_rrb(t_list *stack)
 {
-	t_stack *prev;
+	t_stack	*prev;
 	t_stack	*current;
 
 	if (stack->b == NULL || stack->b->next == NULL)

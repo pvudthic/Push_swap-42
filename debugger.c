@@ -21,12 +21,12 @@ static t_stack	*shift_stack(t_stack *stack)
 	return (stack);
 }
 
-t_stack	*display_stack(t_stack *stack, t_index *index, int start)
+static t_stack	*display_stack(t_stack *stack, t_index *index, int start)
 {
 	if (stack != NULL && index->i >= start)
 	{
 		printf("| [%d]", index->i);
-		printf("	 %d		[%c] |", stack->nb, index->range_sort);
+		printf("	 %d		[%d] |", stack->nb, stack->true_pos);
 		return (shift_stack(stack));
 	}
 	else
@@ -69,4 +69,23 @@ void	display(t_list *stack)
 		i_b = shift_index(i_b);
 	}
 	printf("|---------------------------|   |---------------------------|\n");
+}
+
+void	display_tmp(t_list *stack)
+{
+	t_stack	*stack_tmp;
+	t_index	*i_tmp;
+
+	stack_tmp = stack->tmp;
+	i_tmp = stack->index;
+	printf("|-----------  T  -----------|\n");
+	printf("| i	 n		[s] |\n");
+	printf("|---------------------------|\n");
+	while (i_tmp)
+	{
+		stack_tmp = display_stack(stack_tmp, i_tmp, 0);
+		printf("\n");
+		i_tmp = shift_index(i_tmp);
+	}
+	printf("|---------------------------|\n");
 }
