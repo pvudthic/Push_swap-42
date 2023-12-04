@@ -17,6 +17,7 @@ int		main(int argc, char **argv);
 /*sort function*/
 void	sort(t_list *stack);
 void	easy_sort(t_list *stack, int start, int pivot);
+void	create_rank(t_list *stack);
 
 /*Debugger*/
 void	display(t_list *stack);
