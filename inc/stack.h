@@ -17,6 +17,7 @@ typedef struct a_list
 	int				range;
 	int				sort;
 	struct a_list	*next;
+	struct a_list	*prev;
 }	t_stack;
 
 typedef struct i_list
@@ -29,9 +30,8 @@ typedef struct l_list
 {
 	int		pivot;
 	int		max_range;
+	int		pos;
 	int		size;
-	int		pivot_1;
-	int		pivot_2;
 	t_stack	*a;
 	t_stack	*b;
 	t_stack	*tmp;

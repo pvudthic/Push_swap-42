@@ -1,5 +1,21 @@
 #include "push_swap.h"
 
+void	set_sorted(t_list *stack, int size)
+{
+	t_stack	*stack_a;
+
+	stack_a = stack->a;
+	printf(">>set sorted<<\n");
+	while (size)
+	{
+		stack_a->range = 0;
+		stack_a->sort = 1;
+		stack_a->position = 1;
+		stack_a = stack_a->next;
+		size--;
+	}
+}
+
 void	sort_size_3(t_list *stack)
 {
 	int	n_1;
@@ -25,6 +41,7 @@ void	sort_size_3(t_list *stack)
 	}
 	else if (n_3 < n_1 && n_2 > n_1)
 		do_rra(stack);
+	set_sorted(stack, 3);
 }
 
 void	sort_size_4(t_list *stack)
@@ -51,6 +68,8 @@ void	sort_size_4(t_list *stack)
 		do_rra(stack);
 		r_count--;
 	}
+	set_sorted(stack, 4);
+	display(stack);
 }
 
 void	sort_size_2(t_list *stack)
@@ -60,17 +79,53 @@ void	sort_size_2(t_list *stack)
 
 	n_1 = stack->a->nb;
 	n_2 = stack->a->next->nb;
-	if (n_1 < n_2)
-		return ;
-	else
+	if (n_1 > n_2)
 		do_sa(stack);
+	set_sorted(stack, 2);
 }
 
-void	base_sort(t_list *stack, int size)
+void	base_sort(t_list *stack, int size, int position, char stack_name)
 {
+	int	count;
+
+	count = 0;
 	printf(">>>> sort base by : size =%d\n", size);
+	if (stack_name == 'b')
+	{
+		if (position == 2)
+		{
+			while (count != size)
+			{
+				do_pa(stack);
+				count++;
+			}
+		}
+		if (position == 4)
+		{
+			while (count != size)
+			{
+				do_rrb(stack);
+				do_pa(stack);
+				count++;
+			}
+		}
+	}
+	if (stack_name == 'a')
+	{
+		if (position == 3)
+		{
+			while (count != size)
+			{
+				do_rra(stack);
+				count++;
+			}
+		}
+	}
 	if (size == 1)
+	{
 		return ;
+		set_sorted(stack, 1);
+	}
 	else if (size == 2)
 		sort_size_2(stack);
 	else if (size == 3)

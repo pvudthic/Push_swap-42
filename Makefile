@@ -19,6 +19,8 @@ SRC					=	push_swap.c \
 						create_rank.c \
 						easy_util.c \
 						sort_util.c \
+						partition.c \
+						range_sort_util.c \
 						sort.c \
 
 $(NAME)	: $(PUSH_SWAP_OBJ)
