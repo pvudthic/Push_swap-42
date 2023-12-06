@@ -25,14 +25,14 @@ static t_stack	*display_stack(t_stack *stack, t_index *index, int start)
 {
 	if (stack != NULL && index->i >= start)
 	{
-		printf("| [%d]", index->i);
-		printf("	 %d		[%d] |", stack->nb, stack->true_pos);
+		printf("| [%4d]	", index->i);
+		printf("%6d		< %d >   %d  [%d] |", stack->nb, stack->range, stack->position ,stack->sort);
 		return (shift_stack(stack));
 	}
 	else
 	{
-		printf("| [%d]", index->i);
-		printf("	  		[ ] |");
+		printf("| [%4d]   ", index->i);
+		printf("%6s			       |", " ");
 		return (stack);
 	}
 }
@@ -54,11 +54,11 @@ void	display(t_list *stack)
 	stack_b = stack->b;
 	i_a = stack->index;
 	i_b = stack->index;
-	printf("|-----------  A  -----------|   ");
-	printf("|----------  B  ------------|\n");
-	printf("| i	 n		[s] |   ");
-	printf("| i	 n		[s] |\n");
-	printf("|---------------------------|   |---------------------------|\n");
+	printf("|----------------------  A  -------------------|   ");
+	printf("|-------------------  B  -------------------|\n");
+	printf("|	i	    n		[ R ]  [P] [S] |   ");
+	printf("|	i	   n		[ R ]  [P] [S] |\n");
+	printf("|----------------------------------------------|   |-------------------------------------------|\n");
 	while (i_a)
 	{
 		stack_a = display_stack(stack_a, i_a, 0);
@@ -68,7 +68,7 @@ void	display(t_list *stack)
 		i_a = shift_index(i_a);
 		i_b = shift_index(i_b);
 	}
-	printf("|---------------------------|   |---------------------------|\n");
+	printf("|----------------------------------------------|   |-------------------------------------------|\n");
 }
 
 void	display_tmp(t_list *stack)
@@ -78,14 +78,14 @@ void	display_tmp(t_list *stack)
 
 	stack_tmp = stack->tmp;
 	i_tmp = stack->index;
-	printf("|-----------  T  -----------|\n");
-	printf("| i	 n		[s] |\n");
-	printf("|---------------------------|\n");
+	printf("|----------------------  T  -------------------|\n");
+	printf("|	i	    n		[ R ]  [P] [S] |\n");
+	printf("|----------------------------------------------|\n");
 	while (i_tmp)
 	{
 		stack_tmp = display_stack(stack_tmp, i_tmp, 0);
 		printf("\n");
 		i_tmp = shift_index(i_tmp);
 	}
-	printf("|---------------------------|\n");
+	printf("|----------------------------------------------|\n");
 }
