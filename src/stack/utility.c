@@ -31,4 +31,3 @@ int	stack_size(t_list *stack, char name)
 	}
 	return (size);
 }
-

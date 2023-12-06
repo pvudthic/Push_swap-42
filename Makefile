@@ -14,6 +14,7 @@ SRC					=	push_swap.c \
 						free_error.c \
 						create_index.c \
 						create_stack.c \
+						base_sort.c \
 						easy_sort.c \
 						create_rank.c \
 						easy_util.c \

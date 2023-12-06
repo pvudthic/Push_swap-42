@@ -13,7 +13,9 @@
 typedef struct a_list
 {
 	int				nb;
-	int				true_pos;
+	int				position;
+	int				range;
+	int				sort;
 	struct a_list	*next;
 }	t_stack;
 
@@ -26,11 +28,28 @@ typedef struct i_list
 typedef struct l_list
 {
 	int		pivot;
+	int		max_range;
+	int		size;
+	int		pivot_1;
+	int		pivot_2;
 	t_stack	*a;
 	t_stack	*b;
 	t_stack	*tmp;
 	t_index	*index;
 }	t_list;
+
+/*Operation*/
+void	do_pa(t_list *stack);
+void	do_pb(t_list *stack);
+void	do_sa(t_list *stack);
+void	do_sb(t_list *stack);
+void	do_ss(t_list *stack);
+void	do_ra(t_list *stack);
+void	do_rb(t_list *stack);
+void	do_rr(t_list *stack);
+void	do_rra(t_list *stack);
+void	do_rrb(t_list *stack);
+void	do_rrr(t_list *stack);
 
 /*Create Stack*/
 t_list	*init_stack(t_list *stack, int argc, char **argv);

@@ -5,16 +5,19 @@ void	mem_alloc(int nb, t_list *stack)
 	t_stack	*new_a;
 	t_stack	*new_tmp;
 
-	new_a = (t_stack *)malloc(sizeof(stack->a));
+	new_a = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_a)
 		error_exit(stack);
-	new_tmp = (t_stack *)malloc(sizeof(stack->tmp));
+	new_tmp = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_tmp)
 		error_exit(stack);
 	new_a->nb = nb;
 	new_tmp->nb = nb;
-	new_a->true_pos = 0;
-	new_tmp->true_pos = 0;
+	new_a->sort = 0;
+	new_tmp->sort = 0;
+	new_a->position = 1;
+	new_tmp->position = 1;
+	new_a->range = 1;
 	new_a->next = stack->a;
 	new_tmp->next = stack->tmp;
 	stack->a = new_a;

@@ -37,5 +37,4 @@ void	create_rank(t_list *stack)
 		find_rank(stack_a, stack_tmp);
 		stack_a = stack_a->next;
 	}
-	display(stack);
 }
