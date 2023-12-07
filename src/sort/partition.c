@@ -14,15 +14,6 @@ t_stack	*start_stack(t_stack *stack, int max_range)
 	return (current);
 }
 
-/*
-	We should  collect && update of
-		addres of last stack
-		or addrest of first stack
-	When rotate, push, swap happen
-	in stack
-	becuase it easy to use when we compare number
-*/
-
 int	partition_pos4(t_list *stack, int size, int max_range)
 {
 	int		pivot_1;
@@ -37,6 +28,14 @@ int	partition_pos4(t_list *stack, int size, int max_range)
 	while (size)
 	{
 		/*It will the last number we should try another collect address*/
+		/*
+	We should  collect && update of
+		addres of last stack
+		or addrest of first stack
+	When rotate, push, swap happen
+	in stack
+	becuase it easy to use when we compare number
+*/
 		size--;
 	}
 	return (max_range + 2);
