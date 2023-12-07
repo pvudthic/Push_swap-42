@@ -19,7 +19,9 @@ void	do_rra(t_list *stack)
 	}
 	current->next = stack->a;
 	prev->next = NULL;
+	stack->bottom_a = prev; /*adjust position*/
 	stack->a = current;
+	stack->top_a = stack->a; /*adjust position*/
 	printf("rra\n");
 }
 
@@ -38,7 +40,9 @@ void	do_rrb(t_list *stack)
 	}
 	current->next = stack->b;
 	prev->next = NULL;
+	stack->bottom_b = prev; /*adjust position*/
 	stack->b = current;
+	stack->top_b = stack->b; /*adjust position*/
 	printf("rrb\n");
 }
 

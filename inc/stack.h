@@ -14,7 +14,7 @@ typedef struct a_list
 {
 	int				nb;
 	int				position;
-	int				range;
+	int				range; /* Maybe change name to group ?*/
 	int				sort;
 	struct a_list	*next;
 	struct a_list	*prev;
@@ -30,10 +30,15 @@ typedef struct l_list
 {
 	int		pivot;
 	int		max_range;
-	int		pos;
-	int		size;
+	//int		pos;
+	int		size_a;
+	int		size_b;
 	t_stack	*a;
 	t_stack	*b;
+	t_stack	*top_a;
+	t_stack	*bottom_a;
+	t_stack	*top_b;
+	t_stack	*bottom_b;
 	t_stack	*tmp;
 	t_index	*index;
 }	t_list;
@@ -67,5 +72,6 @@ void	free_index_ab(t_list *stack);
 /*Utillitys*/
 int		stack_size(t_list *stack, char name);
 int		last_num(t_stack *stack);
+t_stack	*bottom_stack(t_stack *stack);
 
 #endif

@@ -1,5 +1,17 @@
 #include "stack.h"
 
+t_stack	*bottom_stack(t_stack *stack)
+{
+	t_stack	*current;
+
+	current = stack;
+	while (current->next)
+	{
+		current = current->next;
+	}
+	return (current);
+}
+
 int	last_num(t_stack *stack)
 {
 	t_stack	*current;

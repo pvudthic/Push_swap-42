@@ -1,5 +1,11 @@
 #include "push_swap.h"
 
+/*
+	We should do partition for each position
+		Partition in the circular partition on each range
+		for most effiences way to instruction operation.
+*/
+
 t_stack	*start_stack(t_stack *stack, int max_range)
 {
 	t_stack *current;
@@ -20,22 +26,17 @@ int	partition_pos4(t_list *stack, int size, int max_range)
 	int		pivot_2;
 	t_stack	*current;
 
-	exit(0);
+	display_position(stack);
 	current = start_stack(stack->b, max_range);
 	pivot_1 = minimum(current, size) + (size / 3);
 	pivot_2 = minimum(current, size) + (size / 3) * 2;
 	printf("pv1:%d, pv2:%d\n", pivot_1, pivot_2);
 	while (size)
 	{
-		/*It will the last number we should try another collect address*/
-		/*
-	We should  collect && update of
-		addres of last stack
-		or addrest of first stack
-	When rotate, push, swap happen
-	in stack
-	becuase it easy to use when we compare number
-*/
+		if (stack->bottom_b->nb < pivot_2)
+		{
+
+		}
 		size--;
 	}
 	return (max_range + 2);

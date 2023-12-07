@@ -6,7 +6,13 @@ int	main(int argc, char **argv)
 
 	stack = NULL;
 	stack = init_stack(stack, argc, argv);
+	stack->top_a = stack->a;
+	stack->top_b = NULL;
+	stack->bottom_a = bottom_stack(stack->a);
+	stack->bottom_b = NULL;
+	stack->size_a = stack_size(stack, 'a');
 	display(stack);
+	display_position(stack);
 	sort(stack);
 	return (0);
 }

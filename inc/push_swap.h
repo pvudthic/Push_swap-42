@@ -20,6 +20,7 @@ void	create_rank(t_list *stack);
 /*Debugger*/
 void	display(t_list *stack);
 void	display_tmp(t_list *stack);
+void	display_position(t_list *stack);
 /*Sort utillity*/
 t_stack	*shift_start(t_stack *ref, int start);
 int		find_pivot(t_stack *ref, int start);

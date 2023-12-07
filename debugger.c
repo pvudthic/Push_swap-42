@@ -37,12 +37,6 @@ static t_stack	*display_stack(t_stack *stack, t_index *index, int start)
 	}
 }
 
-void	clear_screen(void)
-{
-	sleep(2);
-	printf("\033[H\033[J");
-}
-
 void	display(t_list *stack)
 {
 	t_stack	*stack_a;
@@ -57,7 +51,7 @@ void	display(t_list *stack)
 	printf("|----------------------  A  -------------------|   ");
 	printf("|-------------------  B  -------------------|\n");
 	printf("|	i	    n		[ R ]  [P] [S] |   ");
-	printf("|	i	   n		[ R ]  [P] [S] |\n");
+	printf("|	i	    n		[ R ]  [P] [S] |\n");
 	printf("|----------------------------------------------|   |-------------------------------------------|\n");
 	while (i_a)
 	{
@@ -88,4 +82,32 @@ void	display_tmp(t_list *stack)
 		i_tmp = shift_index(i_tmp);
 	}
 	printf("|----------------------------------------------|\n");
+}
+
+void	display_position(t_list *stack)
+{
+	printf("\n\n|---------[ T_A ]----------|--------[ T_B ]---------|\n");
+	printf("|%25s | %23s|\n", " ", " ");
+	if (stack->top_a)
+		printf("| %10p   [%7d]", stack->top_a, stack->top_a->nb);
+	else if (!stack->top_a)
+		printf("| %10p   %10s", stack->top_a, " ");
+	if (stack->top_b)
+		printf("  | %10p   [%7d]|\n", stack->top_b, stack->top_b->nb);
+	else if (!stack->top_b)
+		printf("  | %10p   %10s|\n", stack->top_b, " ");
+	printf("|%25s | %23s|\n", " ", " ");
+	printf("|---------------------------------------------------|\n");
+	printf("|%25s | %23s|\n", " ", " ");
+	if (stack->bottom_a)
+		printf("| %10p   [%7d]", stack->bottom_a, stack->bottom_a->nb);
+	else if (!stack->bottom_a)
+		printf("| %10p   %10s", stack->bottom_a, " ");
+	if (stack->bottom_b)
+		printf("  | %10p   [%7d]|\n", stack->bottom_b, stack->bottom_b->nb);
+	else if (!stack->bottom_b)
+		printf("  | %10p   %10s|\n", stack->bottom_b, " ");
+	printf("|%25s | %23s|\n", " ", " ");
+	printf("|---------[ B_A ]----------|---------[ B_B ]--------|\n");
+	printf("|---------{ %3d }----------|---------{ %3d }--------|\n", stack->size_a, stack->size_b);
 }
