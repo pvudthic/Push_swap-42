@@ -87,6 +87,6 @@ t_list	*init_stack(t_list *stack, int argc, char **argv)
 		mem_alloc(nb, stack);
 		argc--;
 	}
-	initialize_index(stack);
+	//initialize_index(stack);
 	return (stack);
 }

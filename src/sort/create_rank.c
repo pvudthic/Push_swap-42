@@ -29,7 +29,6 @@ void	create_rank(t_list *stack)
 	pivot = find_pivot(stack->tmp, stack->tmp->nb);
 	start = find_start(stack->tmp, pivot);
 	easy_sort(stack, start, pivot);
-	display_tmp(stack);
 	stack_a = stack->a;
 	stack_tmp = stack->tmp;
 	while (stack_a)

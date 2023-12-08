@@ -1,9 +1,12 @@
 #include "stack.h"
+#include "push_swap.h"
 
 void	do_ra(t_list *stack)
 {
 	t_stack	*current;
 	t_stack	*head;
+
+//	static int i = 0;
 
 	if (stack->a == NULL || stack->a->next == NULL)
 		return ;
@@ -18,6 +21,12 @@ void	do_ra(t_list *stack)
 	stack->a->next = NULL;
 	stack->a = head;
 	printf("ra\n");
+	// i++;
+	// if (i >= 300)
+	// {
+	// 	display(stack);
+	// 	exit(0);
+	// }
 	stack->top_a = head; /*adjust position*/
 }
 

@@ -30,7 +30,6 @@ typedef struct l_list
 {
 	int		pivot;
 	int		max_range;
-	//int		pos;
 	int		size_a;
 	int		size_b;
 	t_stack	*a;
@@ -40,6 +39,7 @@ typedef struct l_list
 	t_stack	*top_b;
 	t_stack	*bottom_b;
 	t_stack	*tmp;
+	t_stack *range_stack;
 	t_index	*index;
 }	t_list;
 

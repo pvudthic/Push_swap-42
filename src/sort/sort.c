@@ -16,53 +16,61 @@ int	range_size(t_stack *stack, int max_range)
 	return (size);
 }
 
-int	find_position(t_stack *stack, int max_range)
+int	find_position(t_list *stack, int max_range)
 {
-	t_stack *current;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-	current = stack;
-	while (current)
+	stack_a = stack->a;
+	stack_b = stack->b;
+	while (stack_a)
 	{
-		if (current->range == max_range)
-			break;
-		current = current->next;
+		if (stack_a->range == max_range)
+		{
+			stack->range_stack = stack_a;
+			return (stack_a->position);
+		}
+		stack_a = stack_a->next;
 	}
-	return (current->position);
+	while (stack_b)
+	{
+		if (stack_b->range == max_range)
+		{
+			stack->range_stack = stack_b;
+			return (stack_b->position);
+		}
+		stack_b = stack_b->next;
+	}
+	return (0);
 }
 
 int	position_partition(t_list *stack, int size, int position, int max_range)
 {
 	if (position == 1)
-	{
-		return (partition_pos1(stack, size, max_range));
-	}
-	if (position == 2)
-	{
-		return (partition_pos2(stack, size, max_range));
-	}
-	if (position == 4)
-	{
-		return (partition_pos4(stack, size, max_range));
-	}
-	return (0);
+		partition_pos1(stack, size, max_range);
+	else if (position == 2)
+		partition_pos2(stack, size, max_range);
+	else if (position == 3)
+		partition_pos3(stack, size, max_range);
+	else if (position == 4)
+		partition_pos4(stack, size, max_range);
+	return (max_range + 2);
 }
 
-int	range_sort(t_list *ref, int max_range, char stack_name)
+int	range_sort(t_list *ref, int max_range, int position)
 {
 	int		size;
-	int		position;
 	t_stack	*stack;
 
-	if (stack_name == 'a')
+	if (position == 1 || position == 3)
 		stack = ref->a;
 	else
 		stack = ref->b;
 	size = range_size(stack, max_range);
-	position = find_position(stack, max_range);
-	printf(">>>position :: %d\n", position);
+	//printf(">>>position : %d >>>size : %d\n", position, size);
 	if (size <= 4)
 	{
-		base_sort(ref, size, position, stack_name);
+		base_sort(ref, size, position);
 		return (max_range - 1);
 	}
 	else
@@ -74,19 +82,21 @@ int	range_sort(t_list *ref, int max_range, char stack_name)
 
 void	sort(t_list *stack)
 {
+	int		position;
 	int		max_range;
-	char	stack_name;
 
 	create_rank(stack);
-	first_partition(stack, 1);
+	//display(stack);
+	first_partition(stack);
 	max_range = stack->max_range - 1;
-	display(stack);
 	while (max_range)
 	{
-		printf("max_range == %d\n", max_range);
-		stack_name = find_stack_name(stack, max_range);
-		printf("stack_name: %c\n", stack_name);
-		max_range = range_sort(stack, max_range, stack_name);
-		display(stack);
+		//printf("max_range == %d  ", max_range);
+		position = find_position(stack, max_range);
+		//printf("stack position: %d\n", position);
+		max_range = range_sort(stack, max_range, position);
+		//display(stack);
 	}
+	//printf("All should be sort!!\n");
+
 }
