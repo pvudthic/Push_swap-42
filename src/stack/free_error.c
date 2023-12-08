@@ -9,28 +9,37 @@ void	check_duplicate(int nb, t_list *stack)
 	{
 		if (nb == head_stack->nb)
 		{
-			printf("number is duplicate\n");
 			error_exit(stack);
 		}
 		head_stack = head_stack->next;
 	}
 }
 
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
+}
+
 void	error_exit(t_list *stack)
 {
 	if (stack)
-	{
 		free_stack_ab(stack);
-		free_index_ab(stack);
-	}
-	printf("Error\n");
-	exit(0);
-}
-
-void	free_index_ab(t_list *stack)
-{
-	(void) stack;
-	printf("We handle free index in the future..");
+	ft_putendl_fd("Error", 2);
+	exit(1);
 }
 
 void	free_stack_ab(t_list *stack)
@@ -38,10 +47,8 @@ void	free_stack_ab(t_list *stack)
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
 
-	printf("free Stack\n");
 	if (stack->a)
 	{
-		printf("freeing.. A\n");
 		while (stack->a)
 		{
 			tmp_a = stack->a;
@@ -51,7 +58,6 @@ void	free_stack_ab(t_list *stack)
 	}
 	if (stack->b)
 	{
-		printf("freeing.. B\n");
 		while (stack->b)
 		{
 			tmp_b = stack->b;

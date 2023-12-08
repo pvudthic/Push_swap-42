@@ -31,6 +31,8 @@ int	parse_number(char *str, t_list *stack)
 
 	neg = 1;
 	res = 0;
+	if (*str == '\0')
+		error_exit(stack);
 	while (*str)
 	{
 		if ((*str < '0' || *str > '9') && *str != '-' && *str != '+')
