@@ -1,16 +1,7 @@
-#include "push_swap.h"
+#include "debugger.h"
 
 #include <stdio.h>
 #include <unistd.h>
-
-static t_index	*shift_index(t_index *index)
-{
-	if (!index)
-		return (NULL);
-	else
-		index = index->next;
-	return (index);
-}
 
 static t_stack	*shift_stack(t_stack *stack)
 {
@@ -21,18 +12,18 @@ static t_stack	*shift_stack(t_stack *stack)
 	return (stack);
 }
 
-static t_stack	*display_stack(t_stack *stack, t_index *index, int start)
+static t_stack	*display_stack(t_stack *stack, int index)
 {
-	if (stack != NULL && index->i >= start)
+	if (stack != NULL)
 	{
-		printf("| [%4d]	", index->i);
+		printf("| [%4d]	", index);
 		printf("%6d		< %d >   %d  [%d] |", stack->nb, stack->range, stack->position ,stack->sort);
 		return (shift_stack(stack));
 	}
 	else
 	{
-		printf("| [%4d]   ", index->i);
-		printf("%6s			       |", " ");
+		printf("| [%4d]   ", index);
+		printf("%6s		<   >      [ ] |", " ");
 		return (stack);
 	}
 }
@@ -41,48 +32,45 @@ void	display(t_list *stack)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_index	*i_a;
-	t_index	*i_b;
+	int		i;
 
 	stack_a = stack->a;
 	stack_b = stack->b;
-	i_a = stack->index;
-	i_b = stack->index;
+	i = 1;
 	printf("|----------------------  A  -------------------|   ");
 	printf("|-------------------  B  -------------------|\n");
 	printf("|	i	    n		[ R ]  [P] [S] |   ");
 	printf("|	i	    n		[ R ]  [P] [S] |\n");
 	printf("|----------------------------------------------|   |-------------------------------------------|\n");
-	while (i_a)
+	while (i <= stack->t_size)
 	{
-		stack_a = display_stack(stack_a, i_a, 0);
+		stack_a = display_stack(stack_a, i);
 		printf("   ");
-		stack_b = display_stack(stack_b, i_b, 0);
+		stack_b = display_stack(stack_b, i);
 		printf("\n");
-		i_a = shift_index(i_a);
-		i_b = shift_index(i_b);
+		i++;
 	}
 	printf("|----------------------------------------------|   |-------------------------------------------|\n");
 }
 
-void	display_tmp(t_list *stack)
-{
-	t_stack	*stack_tmp;
-	t_index	*i_tmp;
+// void	display_tmp(t_list *stack)
+// {
+// 	t_stack	*stack_tmp;
+// 	t_index	*i_tmp;
 
-	stack_tmp = stack->tmp;
-	i_tmp = stack->index;
-	printf("|----------------------  T  -------------------|\n");
-	printf("|	i	    n		[ R ]  [P] [S] |\n");
-	printf("|----------------------------------------------|\n");
-	while (i_tmp)
-	{
-		stack_tmp = display_stack(stack_tmp, i_tmp, 0);
-		printf("\n");
-		i_tmp = shift_index(i_tmp);
-	}
-	printf("|----------------------------------------------|\n");
-}
+// 	stack_tmp = stack->tmp;
+// 	i_tmp = stack->index;
+// 	printf("|----------------------  T  -------------------|\n");
+// 	printf("|	i	    n		[ R ]  [P] [S] |\n");
+// 	printf("|----------------------------------------------|\n");
+// 	while (i_tmp)
+// 	{
+// 		stack_tmp = display_stack(stack_tmp, i_tmp);
+// 		printf("\n");
+// 		i_tmp = shift_index(i_tmp);
+// 	}
+// 	printf("|----------------------------------------------|\n");
+// }
 
 void	display_position(t_list *stack)
 {

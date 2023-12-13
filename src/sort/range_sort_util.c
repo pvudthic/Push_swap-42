@@ -1,6 +1,20 @@
 #include "push_swap.h"
+#include "stack.h"
+#include "sort.h"
 
-bool	is_sort(t_list *ref, char name, int max_range)
+void	checker(t_list *stack)
+{
+	if (is_sort(stack, 'a'))
+	printf("all sorted!\n");
+	else
+	{
+		printf("KO");
+		display(stack);
+		exit(0);
+	}
+}
+
+bool	is_sort(t_list *ref, char name)
 {
 	t_stack *current;
 
@@ -12,14 +26,18 @@ bool	is_sort(t_list *ref, char name, int max_range)
 	{
 		if (name == 'a')
 		{
-			if ((current->nb > current->next->nb) && current->range == max_range)
+			if ((current->nb > current->next->nb) && current->range == 0 && current->next->range == 0)
+			{
+				printf("%d > %d\n", current->nb, current->next->nb);
 				return (false);
+			}
 		}
 		else if (name == 'b')
 		{
-			if ((current->nb < current->next->nb) && current->range == max_range)
+			if ((current->nb < current->next->nb))
 				return (false);
 		}
+		printf("xx  ");
 		current = current->next;
 	}
 	// If the loop completes without returning false, the stack is sorted.

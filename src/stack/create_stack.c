@@ -89,6 +89,6 @@ t_list	*init_stack(t_list *stack, int argc, char **argv)
 		mem_alloc(nb, stack);
 		argc--;
 	}
-	//initialize_index(stack);
+	stack->t_size = stack_size(stack, 'a');
 	return (stack);
 }

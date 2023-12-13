@@ -1,10 +1,22 @@
 #include "push_swap.h"
 
-/*
-	Find the start
-	That is last sorted before pivot
-	If there was pivot
-*/
+int	minimum(t_stack *ref, int size)
+{
+	int	minimum;
+	t_stack	*stack;
+
+	stack = ref;
+	minimum = stack->nb;
+	while (size)
+	{
+		if (minimum > stack->nb)
+			minimum = stack->nb;
+		stack = stack->next;
+		size--;
+	}
+	return (minimum);
+}
+
 int	find_start(t_stack *ref, int pivot)
 {
 	int		start;

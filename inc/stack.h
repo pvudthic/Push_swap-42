@@ -30,8 +30,12 @@ typedef struct l_list
 {
 	int		pivot;
 	int		max_range;
+	int		t_size;
 	int		size_a;
 	int		size_b;
+	int		n_1;
+	int		n_2;
+	int		n_3;
 	t_stack	*a;
 	t_stack	*b;
 	t_stack	*top_a;
@@ -61,17 +65,17 @@ t_list	*init_stack(t_list *stack, int argc, char **argv);
 t_list	*create_stack(int argc, char *first_input_arg);
 int		parse_number(char *str, t_list *stack);
 void	mem_alloc(int nb, t_list *stack);
-void	initialize_index(t_list *stack);
 
 /*Free error*/
 void	check_duplicate(int nb, t_list *stack);
 void	error_exit(t_list *stack);
 void	free_stack_ab(t_list *stack);
-void	free_index_ab(t_list *stack);
 
 /*Utillitys*/
 int		stack_size(t_list *stack, char name);
 int		last_num(t_stack *stack);
 t_stack	*bottom_stack(t_stack *stack);
+
+void	checker(t_list *stack);
 
 #endif

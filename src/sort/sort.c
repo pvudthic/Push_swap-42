@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "sort.h"
 
 int	range_size(t_stack *stack, int max_range)
 {
@@ -60,23 +60,19 @@ int	position_partition(t_list *stack, int size, int position, int max_range)
 int	range_sort(t_list *ref, int max_range, int position)
 {
 	int		size;
-	t_stack	*stack;
 
 	if (position == 1 || position == 3)
-		stack = ref->a;
+		size = range_size(ref->a, max_range);
 	else
-		stack = ref->b;
-	size = range_size(stack, max_range);
-	//printf(">>>position : %d >>>size : %d\n", position, size);
-	if (size <= 4)
+		size = range_size(ref->b, max_range);
+	if (size <= 3)
 	{
-		base_sort(ref, size, position);
+		//base_sort(ref, size, position);
+		base_sort_new(ref, size, position);
 		return (max_range - 1);
 	}
 	else
-	{
 		max_range = position_partition(ref, size, position, max_range);
-	}
 	return (max_range);
 }
 
@@ -86,17 +82,13 @@ void	sort(t_list *stack)
 	int		max_range;
 
 	create_rank(stack);
-	//display(stack);
 	first_partition(stack);
 	max_range = stack->max_range - 1;
-	while (max_range)
+	while (max_range > 0)
 	{
-		//printf("max_range == %d  ", max_range);
 		position = find_position(stack, max_range);
-		//printf("stack position: %d\n", position);
 		max_range = range_sort(stack, max_range, position);
 		//display(stack);
 	}
-	//printf("All should be sort!!\n");
-
+	//checker(stack);
 }
