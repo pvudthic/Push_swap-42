@@ -34,13 +34,6 @@ static void	move_to_top_a(t_list *stack, int size, int position)
 			do_rrb(stack);
 			do_pa(stack);
 		}
-		/* Debugger */
-		// if (stack->size_a == 500 && stack->size_b == 0)
-		// {
-		// 	printf("here");
-		// 	exit(0);
-		// }
-		/*         */
 	}
 }
 

@@ -1,5 +1,19 @@
 #include "push_swap.h"
 
+static bool	is_sort(t_list *ref)
+{
+	t_stack *current;
+
+	current = ref->a;
+	while (current->next != NULL)
+	{
+		if ((current->nb > current->next->nb))
+			return (false);
+		current = current->next;
+	}
+	return (true);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack;
@@ -11,6 +25,19 @@ int	main(int argc, char **argv)
 	stack->bottom_a = bottom_stack(stack->a);
 	stack->bottom_b = NULL;
 	stack->size_a = stack_size(stack, 'a');
-	sort(stack);
-	return (0);
+	//display(stack);
+	if (!is_sort(stack))
+	{
+		if (stack->size_a == 3)
+			sort3_easy(stack);
+		else if (stack->size_a > 3 && stack->size_a <= 5)
+			sort4_5_easy(stack);
+		else
+			sort(stack);
+	}
+	free_stack_ab(stack);
+	// printf("Here");
+	// exit(0);
+	// display(stack);
+	// checker(stack);
 }

@@ -93,11 +93,15 @@ void	first_partition(t_list *stack)
 	int	max_range;
 
 	max_range = 1;
-	while (stack->size_a >= 4)
+	while (stack->size_a > 3)
 	{
 		partition_pos1(stack, stack->size_a, max_range);
 		max_range += 2;
 	}
-	base_sort_new(stack, stack->size_a, 1);
+	stack->range_stack = stack->a;
+	// display(stack);
+	// display_position(stack);
+	// printf("%p", stack->range_stack);
+	base_sort_new(stack, stack->size_a, 3);
 	stack->max_range = max_range;
 }

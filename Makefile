@@ -15,6 +15,8 @@ SRC					=	push_swap.c \
 						create_stack.c \
 						base_sort.c \
 						base_sort_new.c \
+						sort3_easy.c \
+						sort4_5_easy.c \
 						sort3_position_1.c \
 						sort3_position_2.c \
 						sort3_position_3.c \

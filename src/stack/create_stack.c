@@ -33,18 +33,18 @@ int	parse_number(char *str, t_list *stack)
 	res = 0;
 	if (*str == '\0')
 		error_exit(stack);
+	if (*str == '-' || *str == '+')
+	{
+		if (*(str + 1) < '0' || *(str + 1) > '9')
+			error_exit(stack);
+		if (*str == '-')
+			neg = -1;
+		str++;
+	}
 	while (*str)
 	{
-		if ((*str < '0' || *str > '9') && *str != '-' && *str != '+')
+		if ((*str < '0' || *str > '9'))
 			error_exit(stack);
-		if (*str == '-' || *str == '+')
-		{
-			if (*(str + 1) < '0' || *(str + 1) > '9')
-				error_exit(stack);
-			if (*str == '-')
-				neg = -1;
-			str++;
-		}
 		res = (*str - '0') + (res * 10);
 		if (res < INT_MIN || res > INT_MAX)
 			error_exit(stack);

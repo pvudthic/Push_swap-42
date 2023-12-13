@@ -42,6 +42,21 @@ void	error_exit(t_list *stack)
 	exit(1);
 }
 
+static void	free_stack_tmp(t_list *stack)
+{
+	t_stack *backup;
+
+	if (stack->tmp)
+	{
+		while (stack->tmp)
+		{
+			backup = stack->tmp;
+			stack->tmp = stack->tmp->next;
+			free(backup);
+		}
+	}
+}
+
 void	free_stack_ab(t_list *stack)
 {
 	t_stack	*tmp_a;
@@ -65,5 +80,6 @@ void	free_stack_ab(t_list *stack)
 			free(tmp_b);
 		}
 	}
+	free_stack_tmp(stack);
 	free(stack);
 }

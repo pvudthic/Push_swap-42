@@ -2,13 +2,14 @@
 
 static void	swap(int *a, int *b)
 {
-	int temp = *a;
+	int temp;
 
+	temp = *a;
 	*a = *b;
 	*b = temp;
 }
 
-static void	sortNumbers(int *num1, int *num2, int *num3)
+static void	sort_numbers(int *num1, int *num2, int *num3)
 {
 	if (*num1 > *num2)
 		swap(num1, num2);
@@ -27,7 +28,7 @@ void	assign_lane(t_list *stack, int *top, int *mid, int *bot)
 	sorted[0] = stack->n_1;
 	sorted[1] = stack->n_2;
 	sorted[2] = stack->n_3;
-	sortNumbers(&sorted[0], &sorted[1], &sorted[2]);
+	sort_numbers(&sorted[0], &sorted[1], &sorted[2]);
 	while (i < 3)
 	{
 		if (sorted[i] == stack->n_1)
@@ -56,7 +57,12 @@ void	compare_swap(t_list *ref, int postition)
 	{
 		if (postition == 1 || postition == 3)
 			do_sa(ref);
-		else
+		// else
+		// 	do_sb(ref);
+	}
+	else if (n_1 < n_2)
+	{
+		if (postition == 2 || postition == 4)
 			do_sb(ref);
 	}
 }

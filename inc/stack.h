@@ -59,18 +59,15 @@ void	do_rr(t_list *stack);
 void	do_rra(t_list *stack);
 void	do_rrb(t_list *stack);
 void	do_rrr(t_list *stack);
-
 /*Create Stack*/
 t_list	*init_stack(t_list *stack, int argc, char **argv);
 t_list	*create_stack(int argc, char *first_input_arg);
 int		parse_number(char *str, t_list *stack);
 void	mem_alloc(int nb, t_list *stack);
-
 /*Free error*/
 void	check_duplicate(int nb, t_list *stack);
 void	error_exit(t_list *stack);
 void	free_stack_ab(t_list *stack);
-
 /*Utillitys*/
 int		stack_size(t_list *stack, char name);
 int		last_num(t_stack *stack);
