@@ -1,8 +1,10 @@
 #include "push_swap.h"
+#include "stack.h"
+#include "free_mem.h"
 
 static bool	is_sort(t_list *ref)
 {
-	t_stack *current;
+	t_stack	*current;
 
 	current = ref->a;
 	while (current->next != NULL)
@@ -20,12 +22,6 @@ int	main(int argc, char **argv)
 
 	stack = NULL;
 	stack = init_stack(stack, argc, argv);
-	stack->top_a = stack->a;
-	stack->top_b = NULL;
-	stack->bottom_a = bottom_stack(stack->a);
-	stack->bottom_b = NULL;
-	stack->size_a = stack_size(stack, 'a');
-	stack->size_b = 0;
 	if (!is_sort(stack))
 	{
 		if (stack->size_a == 2)

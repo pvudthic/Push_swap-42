@@ -3,7 +3,7 @@
 int	range_size(t_stack *stack, int max_range)
 {
 	int		size;
-	t_stack *current;
+	t_stack	*current;
 
 	size = 0;
 	current = stack;
@@ -16,7 +16,7 @@ int	range_size(t_stack *stack, int max_range)
 	return (size);
 }
 
-int	find_position(t_list *stack, int max_range)
+static int	find_position(t_list *stack, int max_range)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -44,7 +44,7 @@ int	find_position(t_list *stack, int max_range)
 	return (0);
 }
 
-int	position_partition(t_list *stack, int size, int position, int max_range)
+static int	position_partition(t_list *stack, int size, int position, int max_range)
 {
 	if (position == 1)
 		partition_pos1(stack, size, max_range);
@@ -57,7 +57,10 @@ int	position_partition(t_list *stack, int size, int position, int max_range)
 	return (max_range + 2);
 }
 
-int	range_sort(t_list *ref, int max_range, int position)
+/*We should create new range sort function*/
+
+/*This should change to partition function*/
+static int	range_sort(t_list *ref, int max_range, int position)
 {
 	int		size;
 
@@ -67,7 +70,6 @@ int	range_sort(t_list *ref, int max_range, int position)
 		size = range_size(ref->b, max_range);
 	if (size <= 3)
 	{
-		//base_sort(ref, size, position);
 		base_sort_new(ref, size, position);
 		return (max_range - 1);
 	}
@@ -88,7 +90,5 @@ void	sort(t_list *stack)
 	{
 		position = find_position(stack, max_range);
 		max_range = range_sort(stack, max_range, position);
-		//display(stack);
 	}
-	//checker(stack);
 }

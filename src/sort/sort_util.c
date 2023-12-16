@@ -2,7 +2,7 @@
 
 int	minimum(t_stack *ref, int size)
 {
-	int	minimum;
+	int		minimum;
 	t_stack	*stack;
 
 	stack = ref;
