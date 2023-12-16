@@ -29,7 +29,7 @@ PUSH_SWAP_SRC = push_swap.c \
 				original_quick_sort_util.c \
 				sort_small.c \
 				sort_util.c \
-				sort.c
+				sort.c \
 
 PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:%.c=$(OBJ_DIR)/%.o)
 

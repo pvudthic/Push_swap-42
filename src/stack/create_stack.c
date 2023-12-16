@@ -52,7 +52,7 @@ static int	parse_number(char *str, t_list *stack)
 		if ((*str < '0' || *str > '9'))
 			error_exit(stack);
 		res = (*str - '0') + (res * 10);
-		if (res < INT_MIN || res > INT_MAX)
+		if ((res * neg) < INT_MIN || (res * neg) > INT_MAX)
 			error_exit(stack);
 		str++;
 	}

@@ -75,17 +75,6 @@ void	display(t_list *stack)
 // 	printf("|----------------------------------------------|\n");
 // }
 
-void	checker(t_list *stack)
-{
-	if (is_sort_name(stack, 'a'))
-		printf("all sorted!\n");
-	else
-	{
-		printf("KO");
-		display(stack);
-		exit(0);
-	}
-}
 
 bool	is_sort_name(t_list *ref, char name)
 {
@@ -115,6 +104,18 @@ bool	is_sort_name(t_list *ref, char name)
 	}
 	// If the loop completes without returning false, the stack is sorted.
 	return (true);
+}
+
+void	checker(t_list *stack)
+{
+	if (is_sort_name(stack, 'a'))
+		printf("all sorted!\n");
+	else
+	{
+		printf("KO");
+		display(stack);
+		exit(0);
+	}
 }
 
 void	display_position(t_list *stack)

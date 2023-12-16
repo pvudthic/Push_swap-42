@@ -2,8 +2,11 @@
 #include "free_mem.h"
 #include "stack.h"
 
+#include "push_swap.h"
+
 void	error_exit(t_list *stack)
 {
+
 	if (stack)
 		free_stack_ab(stack);
 	write(2, "Error\n", 6);

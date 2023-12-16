@@ -6,7 +6,7 @@
 /*   By: pvudthic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:16:38 by pvudthic          #+#    #+#             */
-/*   Updated: 2023/11/07 16:16:39 by pvudthic         ###   ########.fr       */
+/*   Updated: 2023/12/16 23:41:46 by pvudthic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,7 @@ ssize_t	ft_putnbr_unsigned(unsigned int n, ssize_t byte, int check)
 			return (-1);
 		n %= 10;
 	}
-	if (n >= 0)
-		x = '0' + n;
-	else
-		x = '0' - n;
+	x = '0' + n;
 	if (write(1, &x, 1) == -1)
 		return (-1);
 	byte++;

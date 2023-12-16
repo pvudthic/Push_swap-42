@@ -6,7 +6,7 @@
 /*   By: pvudthic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 15:49:35 by pvudthic          #+#    #+#             */
-/*   Updated: 2023/09/19 14:35:18 by pvudthic         ###   ########.fr       */
+/*   Updated: 2023/12/16 23:09:03 by pvudthic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*temp;
 
 	max = SIZE_MAX;
-	if (count == 0 | size == 0)
+	if (count == 0 || size == 0)
 	{
 		temp = malloc(0);
 		return (temp);
