@@ -25,10 +25,12 @@ int	main(int argc, char **argv)
 	stack->bottom_a = bottom_stack(stack->a);
 	stack->bottom_b = NULL;
 	stack->size_a = stack_size(stack, 'a');
-	//display(stack);
+	stack->size_b = 0;
 	if (!is_sort(stack))
 	{
-		if (stack->size_a == 3)
+		if (stack->size_a == 2)
+			compare_swap(stack, 3);
+		else if (stack->size_a == 3)
 			sort3_easy(stack);
 		else if (stack->size_a > 3 && stack->size_a <= 5)
 			sort4_5_easy(stack);
@@ -36,8 +38,4 @@ int	main(int argc, char **argv)
 			sort(stack);
 	}
 	free_stack_ab(stack);
-	// printf("Here");
-	// exit(0);
-	// display(stack);
-	// checker(stack);
 }

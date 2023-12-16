@@ -69,7 +69,6 @@ t_list	*create_stack(int argc, char *first_input_arg)
 	stack->a = NULL;
 	stack->b = NULL;
 	stack->tmp = NULL;
-	stack->index = NULL;
 	return (stack);
 }
 

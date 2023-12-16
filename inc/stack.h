@@ -44,7 +44,6 @@ typedef struct l_list
 	t_stack	*bottom_b;
 	t_stack	*tmp;
 	t_stack *range_stack;
-	t_index	*index;
 }	t_list;
 
 /*Operation*/
