@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stdio.h>
 
 t_stack	*bottom_stack(t_stack *stack)
 {
@@ -44,9 +45,10 @@ int	stack_size(t_list *stack, char name)
 	return (size);
 }
 
-
 void	init_value(t_list *stack, t_stack *new_a, t_stack *new_tmp, int nb)
 {
+	t_stack	*bottom;
+
 	new_a->nb = nb;
 	new_tmp->nb = nb;
 	new_a->sort = 0;
@@ -54,9 +56,10 @@ void	init_value(t_list *stack, t_stack *new_a, t_stack *new_tmp, int nb)
 	new_a->position = 1;
 	new_tmp->position = 1;
 	new_a->range = 1;
-	new_a->next = stack->a;
+	bottom = stack->a;
 	new_tmp->next = stack->tmp;
 	stack->a = new_a;
+	stack->a->next = bottom;
 	stack->tmp = new_tmp;
 }
 

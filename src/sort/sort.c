@@ -1,4 +1,5 @@
 #include "sort.h"
+#include "../../debugger.h"
 
 int	range_size(t_stack *stack, int max_range)
 {

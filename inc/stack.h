@@ -4,6 +4,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "libft.h"
 
 typedef struct a_list
 {
@@ -42,6 +43,8 @@ typedef struct l_list
 }	t_list;
 
 t_list	*init_stack(t_list *stack, int argc, char **argv);
+char	**split_to_stack(t_list *stack, char *str);
+char	**free_split(char **data);
 void	init_value(t_list *stack, t_stack *new_a, t_stack *new_tmp, int nb);
 void	init_position(t_list *stack);
 int		stack_size(t_list *stack, char name);

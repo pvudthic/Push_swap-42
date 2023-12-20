@@ -1,5 +1,6 @@
 #include "stack.h"
 #include "free_mem.h"
+#include <stdio.h>
 
 static void	check_duplicate(int nb, t_list *stack)
 {
@@ -21,6 +22,8 @@ static void	alloc_a_b(int nb, t_list *stack)
 	t_stack	*new_a;
 	t_stack	*new_tmp;
 
+	new_a = NULL;
+	new_tmp = NULL;
 	new_a = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_a)
 		error_exit(stack);
@@ -59,16 +62,11 @@ static int	parse_number(char *str, t_list *stack)
 	return ((int)(res * neg));
 }
 
-static t_list	*alloc_list(int argc, char *first_input_arg)
+static t_list	*alloc_list(void)
 {
 	t_list	*stack;
 
 	stack = NULL;
-	if (argc == 2)
-	{
-		parse_number(first_input_arg, stack);
-		exit(0);
-	}
 	stack = (t_list *)malloc(sizeof(t_list));
 	if (!stack)
 		error_exit(NULL);
@@ -81,17 +79,26 @@ static t_list	*alloc_list(int argc, char *first_input_arg)
 t_list	*init_stack(t_list *stack, int argc, char **argv)
 {
 	int		nb;
+	char	**data;
+	char	**head;
 
-	if (argc <= 1)
-		exit(0);
-	stack = alloc_list(argc, argv[1]);
+	if (!*argv[1])
+		error_exit(0);
+	stack = alloc_list();
 	argc--;
 	while (argc > 0)
 	{
-		nb = parse_number(argv[argc], stack);
-		if (stack->a)
-			check_duplicate(nb, stack);
-		alloc_a_b(nb, stack);
+		data = split_to_stack(stack, argv[argc]);
+		head = data;
+		while (*head)
+		{
+			nb = parse_number(*head, stack);
+			if (stack->a)
+				check_duplicate(nb, stack);
+			alloc_a_b(nb, stack);
+			head++;
+		}
+		data = free_split(data);
 		argc--;
 	}
 	init_position(stack);
