@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "sort.h"
 
 int	minimum(t_stack *ref, int size)
 {

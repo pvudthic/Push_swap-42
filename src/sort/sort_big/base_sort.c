@@ -1,5 +1,4 @@
-#include "push_swap.h"
-#include "move.h"
+#include "sort.h"
 
 static void	set_sorted(t_list *stack, int size)
 {

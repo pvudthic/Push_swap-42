@@ -1,22 +1,30 @@
 NAME 			= push_swap
+CHECKER			= checker
 CC 				= gcc
 CFLAGS			= -Wall -Werror -Wextra -Iinc -Isrc -Ilibft
 LIBFT_DIR		= libft
 LIBFT_FILE		= $(LIBFT_DIR)/libft.a
 SRC_DIR			= src
 OBJ_DIR			= obj
-CHECKER			= checker
 
-VPATH = $(SRC_DIR) $(SRC_DIR)/free_mem $(SRC_DIR)/move $(SRC_DIR)/stack $(SRC_DIR)/sort $(SRC_DIR)/sort/sort_big $(SRC_DIR)/sort/sort_small
 
-PUSH_SWAP_SRC	=	push_swap.c \
-					free_mem.c \
-					push.c \
+VPATH = $(SRC_DIR) $(SRC_DIR)/mem_handle $(SRC_DIR)/instruction $(SRC_DIR)/stack $(SRC_DIR)/sort $(SRC_DIR)/sort/sort_big $(SRC_DIR)/checker
+
+STACK_SRC		=	stack.c \
+					stack_util.c \
+					mem_alloc.c \
+					mem_free.c \
+					error_handle.c \
+
+INS_SRC			=	push.c \
 					reverse_rotate.c \
 					rotate.c \
 					swap.c \
-					stack_util.c \
-					create_stack.c \
+					show_output.c
+
+PUSH_SWAP_SRC	=	$(STACK_SRC) \
+					push_swap.c \
+					$(INS_SRC) \
 					base_sort.c \
 					sort3_position_1.c \
 					sort3_position_2.c \
@@ -27,17 +35,19 @@ PUSH_SWAP_SRC	=	push_swap.c \
 					partition_move.c \
 					original_quick_sort.c \
 					create_rank.c \
-					split_data.c \
 					original_quick_sort_util.c \
 					sort_small.c \
 					sort_util.c \
 					sort.c \
 					debugger.c
 
-CHECKER_SRC		=	checker.c
+CHECKER_SRC		=	$(STACK_SRC) \
+					$(INS_SRC) \
+					debugger.c \
+					checker.c
 
-PUSH_SWAP_OBJ	=	$(PUSH_SWAP_SRC:%.c=$(OBJ_DIR)/%.o)
-CHECKER_OBJ		=	$(CHECKER_SRC:%.c=$(OBJ_DIR)/%.o)
+PUSH_SWAP_OBJ	=	$(PUSH_SWAP_SRC:%.c=obj/%.o)
+CHECKER_OBJ		=	$(CHECKER_SRC:%.c=obj/checker/%.o)
 
 $(NAME): $(LIBFT_FILE) $(PUSH_SWAP_OBJ)
 	$(CC) $(CFLAGS) $(PUSH_SWAP_OBJ) $(LIBFT_FILE) -o $@
@@ -49,23 +59,25 @@ $(PUSH_SWAP_OBJ): $(OBJ_DIR)/%.o: %.c | obj
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(CHECKER): $(CHECKER_OBJ)
-	$(CC) $(CFLAGS) $(CHECKER_OBJ) -o $@
+	$(CC) $(CFLAGS) $(CHECKER_OBJ) $(LIBFT_FILE) -o $@
 
-$(CHECKER_OBJ): $(OBJ_DIR)/%.o: %.c | obj
+$(CHECKER_OBJ): obj/checker/%.o: %.c | obj
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
-# bonus: $(CHECKER)
+bonus: $(CHECKER)
 
 obj:
 	mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)/checker
 
 clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f checker
 	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all

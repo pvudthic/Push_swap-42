@@ -1,9 +1,8 @@
-#ifndef MOVE_H
-# define MOVE_H
+#ifndef INSTRUCTION_H
+# define INSTRUCTION_H
 
 # include "stack.h"
-# include "libft.h"
-# include <stdio.h>
+# include "inc_stdlib.h"
 
 void	do_pa(t_list *stack);
 void	do_pb(t_list *stack);
@@ -16,5 +15,6 @@ void	do_rr(t_list *stack);
 void	do_rra(t_list *stack);
 void	do_rrb(t_list *stack);
 void	do_rrr(t_list *stack);
+int		show_output(char *str, int show);
 
 #endif

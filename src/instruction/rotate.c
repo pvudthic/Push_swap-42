@@ -1,7 +1,4 @@
-#include "libft.h"
-#include "stack.h"
-#include "push_swap.h"
-#include "free_mem.h"
+#include "instruction.h"
 
 void	do_ra(t_list *stack)
 {
@@ -20,7 +17,7 @@ void	do_ra(t_list *stack)
 	stack->bottom_a = current->next;
 	stack->a->next = NULL;
 	stack->a = head;
-	if (ft_printf("ra\n") == -1)
+	if (show_output("ra\n", stack->show_output) == -1)
 		error_exit(stack);
 	stack->top_a = head;
 }
@@ -42,7 +39,7 @@ void	do_rb(t_list *stack)
 	stack->bottom_b = current->next;
 	stack->b->next = NULL;
 	stack->b = head;
-	if (ft_printf("rb\n") == -1)
+	if (show_output("rb\n", stack->show_output) == -1)
 		error_exit(stack);
 	stack->top_b = head;
 }
@@ -86,10 +83,11 @@ static void	rb(t_list *stack)
 	stack->b = head;
 	stack->top_b = head;
 }
+
 void	do_rr(t_list *stack)
 {
 	ra(stack);
 	rb(stack);
-	if (ft_printf("rr\n") == -1)
+	if (show_output("rr\n", stack->show_output) == -1)
 		error_exit(stack);
 }

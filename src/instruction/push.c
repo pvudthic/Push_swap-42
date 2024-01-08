@@ -1,7 +1,4 @@
-#include "libft.h"
-#include "stack.h"
-#include "move.h"
-#include "free_mem.h"
+#include "instruction.h"
 
 void	do_pa(t_list *stack)
 {
@@ -13,7 +10,7 @@ void	do_pa(t_list *stack)
 		stack->b = stack->b->next;
 		tmp_stack->next = stack->a;
 		stack->a = tmp_stack;
-		if (ft_printf("pa\n") == -1)
+		if (show_output("pa\n", stack->show_output) == -1)
 			error_exit(stack);
 		stack->top_a = stack->a;
 		stack->top_b = stack->b;
@@ -40,7 +37,7 @@ void	do_pb(t_list *stack)
 		stack->a = stack->a->next;
 		tmp_stack->next = stack->b;
 		stack->b = tmp_stack;
-		if (ft_printf("pb\n") == -1)
+		if (show_output("pb\n", stack->show_output) == -1)
 			error_exit(stack);
 		stack->top_a = stack->a;
 		stack->top_b = stack->b;

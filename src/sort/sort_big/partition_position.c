@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "sort.h"
 
 void	partition_pos1(t_list *stack, int size, int max_range)
 {

@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "sort.h"
 
 static void	partition(t_list *stack, t_stack *stack_tmp, t_stack *marker)
 {
@@ -13,7 +13,7 @@ static void	partition(t_list *stack, t_stack *stack_tmp, t_stack *marker)
 	easy_sort(stack, next, find_pivot(stack->tmp, next));
 }
 
-static t_stack	*tmp_swap(t_list *stack, t_stack *index, t_stack *marker, int start)
+t_stack	*tmp_swap(t_list *stack, t_stack *index, t_stack *marker, int start)
 {
 	int	tmp_swap;
 

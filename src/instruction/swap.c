@@ -1,7 +1,4 @@
-#include "libft.h"
-#include "stack.h"
-#include "move.h"
-#include "free_mem.h"
+#include "instruction.h"
 
 void	do_sa(t_list *stack)
 {
@@ -12,7 +9,7 @@ void	do_sa(t_list *stack)
 		tmp = stack->a->next->nb;
 		stack->a->next->nb = stack->a->nb;
 		stack->a->nb = tmp;
-		if (ft_printf("sa\n") == -1)
+		if (show_output("sa\n", stack->show_output) == -1)
 			error_exit(stack);
 		stack->top_a = stack->a;
 		if (stack->size_a == 2)
@@ -31,7 +28,7 @@ void	do_sb(t_list *stack)
 		tmp = stack->b->next->nb;
 		stack->b->next->nb = stack->b->nb;
 		stack->b->nb = tmp;
-		if (ft_printf("sb\n") == -1)
+		if (show_output("sb\n", stack->show_output) == -1)
 			error_exit(stack);
 		stack->top_b = stack->b;
 		if (stack->size_b == 2)
@@ -61,7 +58,7 @@ void	do_ss(t_list *stack)
 		}
 		stack->top_a = stack->a;
 		stack->top_b = stack->b;
-		if (ft_printf("ss\n") == -1)
+		if (show_output("ss\n", stack->show_output) == -1)
 			error_exit(stack);
 	}
 	else

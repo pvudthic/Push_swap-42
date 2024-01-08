@@ -2,12 +2,13 @@
 # define SORT_H
 
 # include "stack.h"
-# include "push_swap.h"
+# include "instruction.h"
 
-void	sort(t_list *stack);
+void	big_sort(t_list *stack);
 void	easy_sort(t_list *stack, int start, int pivot);
 void	base_sort_new(t_list *stack, int size, int position);
 void	create_rank(t_list *stack);
+void	small_sort(t_list *stack);
 void	sort3_easy(t_list *stack);
 void	sort4_5_easy(t_list *stack);
 int		range_size(t_stack *stack, int max_range);

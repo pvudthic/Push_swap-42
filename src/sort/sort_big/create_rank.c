@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "sort.h"
 
 static void	find_rank(t_stack *stack_a, t_stack *stack_tmp)
 {
@@ -26,6 +26,7 @@ void	create_rank(t_list *stack)
 	int		pivot;
 	int		start;
 
+	create_stack_tmp(stack);
 	pivot = find_pivot(stack->tmp, stack->tmp->nb);
 	start = find_start(stack->tmp, pivot);
 	easy_sort(stack, start, pivot);

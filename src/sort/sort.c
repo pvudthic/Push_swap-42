@@ -1,5 +1,5 @@
 #include "sort.h"
-#include "../../debugger.h"
+#include "debugger.h"
 
 int	range_size(t_stack *stack, int max_range)
 {
@@ -45,20 +45,18 @@ static int	find_position(t_list *stack, int max_range)
 	return (0);
 }
 
-static int	position_partition(t_list *stack, int size, int position, int max_range)
+static int	position_partition(t_list *stack, int size, int pos, int m_range)
 {
-	if (position == 1)
-		partition_pos1(stack, size, max_range);
-	else if (position == 2)
-		partition_pos2(stack, size, max_range);
-	else if (position == 3)
-		partition_pos3(stack, size, max_range);
-	else if (position == 4)
-		partition_pos4(stack, size, max_range);
-	return (max_range + 2);
+	if (pos == 1)
+		partition_pos1(stack, size, m_range);
+	else if (pos == 2)
+		partition_pos2(stack, size, m_range);
+	else if (pos == 3)
+		partition_pos3(stack, size, m_range);
+	else if (pos == 4)
+		partition_pos4(stack, size, m_range);
+	return (m_range + 2);
 }
-
-/*We should create new range sort function*/
 
 /*This should change to partition function*/
 static int	range_sort(t_list *ref, int max_range, int position)
@@ -79,7 +77,7 @@ static int	range_sort(t_list *ref, int max_range, int position)
 	return (max_range);
 }
 
-void	sort(t_list *stack)
+void	big_sort(t_list *stack)
 {
 	int		position;
 	int		max_range;

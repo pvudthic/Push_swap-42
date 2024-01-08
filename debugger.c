@@ -1,10 +1,4 @@
 #include "debugger.h"
-#include "stack.h"
-#include "sort.h"
-#include "push_swap.h"
-
-#include <stdio.h>
-#include <unistd.h>
 
 static t_stack	*shift_stack(t_stack *stack)
 {

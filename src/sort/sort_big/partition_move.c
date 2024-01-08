@@ -1,5 +1,4 @@
-#include "push_swap.h"
-#include "move.h"
+#include "sort.h"
 
 void	move_1_to_(t_list *stack, int max_range, int des)
 {

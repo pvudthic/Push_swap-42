@@ -1,8 +1,17 @@
-#include "push_swap.h"
 #include "stack.h"
-#include "free_mem.h"
-#include "debugger.h"
+#include "sort.h"
 
+static void	init_position(t_list *stack)
+{
+	stack->top_a = stack->a;
+	stack->bottom_a = bottom_stack(stack->a);
+	stack->top_b = NULL;
+	stack->bottom_b = NULL;
+	stack->size_a = stack->t_size;
+	stack->size_b = 0;
+}
+
+/* Check if is reived number already sort */
 static bool	is_sort(t_list *ref)
 {
 	t_stack	*current;
@@ -17,6 +26,8 @@ static bool	is_sort(t_list *ref)
 	return (true);
 }
 
+/* Receive number from argument */
+/* Sort number with 2 stack called "A","B" */
 int	main(int argc, char **argv)
 {
 	t_list	*stack;
@@ -24,21 +35,21 @@ int	main(int argc, char **argv)
 	stack = NULL;
 	if (argc > 1)
 	{
-		stack = init_stack(stack, argc, argv);
+		stack = init_stack(argc, argv);
+		init_position(stack);
+		stack->show_output = 1;
 		if (stack)
 		{
 			if (!is_sort(stack))
 			{
-				if (stack->size_a == 2)
-					compare_swap(stack, 3);
-				else if (stack->size_a == 3)
-					sort3_easy(stack);
-				else if (stack->size_a > 3 && stack->size_a <= 5)
-					sort4_5_easy(stack);
+				if (stack->size_a <= 5)
+					small_sort(stack);
 				else
-					sort(stack);
+					big_sort(stack);
 			}
-			free_stack_ab(stack);
+			clear_data(stack);
 		}
 	}
 }
+// Notes
+// Do nothing when no input argument (arg count = 1)

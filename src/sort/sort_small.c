@@ -1,5 +1,4 @@
 #include "sort.h"
-#include "move.h"
 
 void	sort4_5_easy(t_list *stack)
 {
@@ -53,4 +52,14 @@ void	sort3_easy(t_list *stack)
 	}
 	else if (top == 2 && mid == 3 && bot == 1)
 		do_rra(stack);
+}
+
+void	small_sort(t_list *stack)
+{
+	if (stack->size_a == 2)
+		compare_swap(stack, 3);
+	else if (stack->size_a == 3)
+		sort3_easy(stack);
+	else if (stack->size_a > 3 && stack->size_a <= 5)
+		sort4_5_easy(stack);
 }

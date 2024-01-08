@@ -1,5 +1,45 @@
 #include "stack.h"
-#include <stdio.h>
+
+void	create_stack_tmp(t_list *stack)
+{
+	t_stack *stack_a;
+
+	stack_a = stack->a;
+	while (stack_a)
+	{
+		stack->tmp = alloc_stack(stack, stack->tmp, stack_a->nb);
+		stack_a = stack_a->next;
+	}
+}
+
+int	convert_nb(char *str, t_list *stack)
+{
+	int			neg;
+	long long	res;
+
+	neg = 1;
+	res = 0;
+	if (*str == '\0')
+		error_exit(stack);
+	if (*str == '-' || *str == '+')
+	{
+		if (*(str + 1) < '0' || *(str + 1) > '9')
+			error_exit(stack);
+		if (*str == '-')
+			neg = -1;
+		str++;
+	}
+	while (*str)
+	{
+		if ((*str < '0' || *str > '9'))
+			error_exit(stack);
+		res = (*str - '0') + (res * 10);
+		if ((res * neg) < INT_MIN || (res * neg) > INT_MAX)
+			error_exit(stack);
+		str++;
+	}
+	return ((int)(res * neg));
+}
 
 t_stack	*bottom_stack(t_stack *stack)
 {
@@ -11,18 +51,6 @@ t_stack	*bottom_stack(t_stack *stack)
 		current = current->next;
 	}
 	return (current);
-}
-
-int	last_num(t_stack *stack)
-{
-	t_stack	*current;
-
-	current = stack;
-	while (current->next)
-	{
-		current = current->next;
-	}
-	return (current->nb);
 }
 
 int	stack_size(t_list *stack, char name)
@@ -45,31 +73,17 @@ int	stack_size(t_list *stack, char name)
 	return (size);
 }
 
-void	init_value(t_list *stack, t_stack *new_a, t_stack *new_tmp, int nb)
+void	check_duplicate(int nb, t_list *stack)
 {
-	t_stack	*bottom;
+	t_stack	*head_stack;
 
-	new_a->nb = nb;
-	new_tmp->nb = nb;
-	new_a->sort = 0;
-	new_tmp->sort = 0;
-	new_a->position = 1;
-	new_tmp->position = 1;
-	new_a->range = 1;
-	bottom = stack->a;
-	new_tmp->next = stack->tmp;
-	stack->a = new_a;
-	stack->a->next = bottom;
-	stack->tmp = new_tmp;
-}
-
-void	init_position(t_list *stack)
-{
-	stack->t_size = stack_size(stack, 'a');
-	stack->top_a = stack->a;
-	stack->bottom_a = bottom_stack(stack->a);
-	stack->top_b = NULL;
-	stack->bottom_b = NULL;
-	stack->size_a = stack->t_size;
-	stack->size_b = 0;
+	if (!stack->a)
+		return ;
+	head_stack = stack->a;
+	while (head_stack)
+	{
+		if (nb == head_stack->nb)
+			error_exit(stack);
+		head_stack = head_stack->next;
+	}
 }

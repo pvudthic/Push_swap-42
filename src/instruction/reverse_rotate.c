@@ -1,7 +1,4 @@
-#include "libft.h"
-#include "stack.h"
-#include "move.h"
-#include "free_mem.h"
+#include "instruction.h"
 
 void	do_rra(t_list *stack)
 {
@@ -21,7 +18,7 @@ void	do_rra(t_list *stack)
 	stack->bottom_a = prev;
 	stack->a = current;
 	stack->top_a = stack->a;
-	if (ft_printf("rra\n") == -1)
+	if (show_output("rra\n", stack->show_output) == -1)
 		error_exit(stack);
 }
 
@@ -43,7 +40,7 @@ void	do_rrb(t_list *stack)
 	stack->bottom_b = prev;
 	stack->b = current;
 	stack->top_b = stack->b;
-	if (ft_printf("rrb\n") == -1)
+	if (show_output("rrb\n", stack->show_output) == -1)
 		error_exit(stack);
 }
 
@@ -91,6 +88,6 @@ void	do_rrr(t_list *stack)
 {
 	rra(stack);
 	rrb(stack);
-	if (ft_printf("rrr\n") == -1)
+	if (show_output("rrr\n", stack->show_output) == -1)
 		error_exit(stack);
 }
