@@ -1,68 +1,14 @@
 #include "checker.h"
-#include "debugger.h"
 
-static bool	is_sort(t_list *ref)
-{
-	t_stack	*current;
-
-	if (ref->b)
-		return (false);
-	current = ref->a;
-	while (current->next != NULL)
-	{
-		if ((current->nb > current->next->nb))
-			return (false);
-		current = current->next;
-	}
-	return (true);
-}
-
-void	free_er(char *str1, char *str2, t_list *stack)
-{
-	if (str1)
-		free(str1);
-	if (str2)
-		free(str2);
-	error_exit(stack);
-}
-
-char	*read_instruction(int fd, t_list *stack)
-{
-	int		rd;
-	char	*buf;
-	char	*old_data;
-	char	*data;
-
-	data = NULL;
-	buf = (char *)malloc(BUFFER_SIZE);
-	if (!buf)
-		free_er(NA, NA, stack);
-	rd = 1;
-	while (rd)
-	{
-		rd = read(fd, buf, BUFFER_SIZE);
-		if (rd < 0)
-			free_er(buf, data, stack);
-		buf[rd] = 0;
-		old_data = data;
-		data = ft_strjoin(data, buf);
-		if (!data)
-			free_er(buf, data, stack);
-		free(old_data);
-	}
-	free(buf);
-	return (data);
-}
-
-int	target_stack(t_list *stack, char target, char move)
+static int	target_stack(t_list *stack, char target, char move)
 {
 	if (target == 'a' && move == 'p')
 		do_pa(stack);
-	else if (target == 'a'  && move == 's')
+	else if (target == 'a' && move == 's')
 		do_sa(stack);
-	else if (target == 'a'  && move == 'r')
+	else if (target == 'a' && move == 'r')
 		do_ra(stack);
-	else if (target == 'a'  && move == 'x')
+	else if (target == 'a' && move == 'x')
 		do_rra(stack);
 	else if (target == 'b' && move == 'p')
 		do_pb(stack);
@@ -83,9 +29,8 @@ int	target_stack(t_list *stack, char target, char move)
 	return (1);
 }
 
-int	decode(char *set, t_list *stack)
+static int	decode(char *set, t_list *stack)
 {
-	//printf("decoding '%c' '%c' '%c' '%c'\n", set[0], set[1], set[2], set[3]);
 	if (set[0] == 'p' && set[2] == '\n')
 		return (target_stack(stack, set[1], 'p'));
 	else if (set[0] == 's' && set[2] == '\n')
@@ -100,7 +45,7 @@ int	decode(char *set, t_list *stack)
 	return (-1);
 }
 
-char	encode(char inst)
+static char	encode(char inst)
 {
 	if (inst == 'p')
 		return ('p');
@@ -118,7 +63,7 @@ char	encode(char inst)
 		return ('E');
 }
 
-bool	run_instruction(t_list *stack, char *inst, char *current)
+static bool	run_instruction(t_list *stack, char *inst, char *current)
 {
 	int		i;
 	char	c_set[5];

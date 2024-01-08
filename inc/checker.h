@@ -18,6 +18,9 @@ typedef struct i_list
 	struct i_list	*next;
 }	t_ins;
 
-int	main(int argc, char **argv);
+int		main(int argc, char **argv);
+bool	is_sort(t_list *ref);
+char	*read_instruction(int fd, t_list *stack);
+void	free_er(char *str1, char *str2, t_list *stack);
 
 #endif

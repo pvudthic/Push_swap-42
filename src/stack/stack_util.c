@@ -2,7 +2,7 @@
 
 void	create_stack_tmp(t_list *stack)
 {
-	t_stack *stack_a;
+	t_stack	*stack_a;
 
 	stack_a = stack->a;
 	while (stack_a)

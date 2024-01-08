@@ -39,12 +39,11 @@ PUSH_SWAP_SRC	=	$(STACK_SRC) \
 					sort_small.c \
 					sort_util.c \
 					sort.c \
-					debugger.c
 
 CHECKER_SRC		=	$(STACK_SRC) \
 					$(INS_SRC) \
-					debugger.c \
-					checker.c
+					checker.c \
+					checker_util.c
 
 PUSH_SWAP_OBJ	=	$(PUSH_SWAP_SRC:%.c=obj/%.o)
 CHECKER_OBJ		=	$(CHECKER_SRC:%.c=obj/checker/%.o)

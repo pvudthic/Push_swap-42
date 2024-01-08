@@ -63,7 +63,7 @@ static void	add_data(t_list *stack, int argc, char **argv)
 /* Create 2 stack from input argument */
 t_list	*init_stack(int argc, char **argv)
 {
-	t_list *new_list;
+	t_list	*new_list;
 
 	if (!*argv[1])
 		error_exit(NULL);
