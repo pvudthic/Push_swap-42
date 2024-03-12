@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/42bangkok.jpg" alt="logo" width="500px" height="auto" />
+  <img src="assets/42bangkok.jpg" alt="logo" width="auto" height="300px" />
 </p>
 
 # Push_swap
