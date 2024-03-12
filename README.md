@@ -7,9 +7,9 @@ This project about sorting algorithm by using 2 stacks data structure and set of
 
 
 
-| Develop on | Language     | Limitation            | Doc |
+| Language     | Limitation            | Doc | Develop on |
 | :-------- | :------- | :------------------------- | :--- |
-| Mac | C | 42 school rule | [subject](subject/en.subject.pdf) |
+| C | 42 school rule | [subject](subject/en.subject.pdf) | Mac |
 
 ### Installation
 
@@ -38,13 +38,14 @@ pa
 
 
 - parameter details (*notes* `p` is `./push_swap`)
+
 | Parameter | example     | Output                |
 | :-------- | :------- | :------------------------- |
 | biger than int | ./p 1 2147483648 | Error |
 | lower than int | ./p 1 -2147483649 | Error |
 | character | ./p 1 2a 3| Error |
 | duplicates | ./p 0 0 | Error |
-| NULL | ./p -null | Error |
+| `NULL` | ./p -null | Error |
 | empty | ./p | *nothing* |
 | already sorted | ./p -3 1 4 | *nothing* |
 | 1 integer | ./p 42 | *nothing* |
