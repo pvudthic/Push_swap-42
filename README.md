@@ -53,7 +53,7 @@ pa
 
 - parameter details (*notes* `p` is `./push_swap`)
 
-| Parameter | example     | Output                |
+| case | example     | output                |
 | :-------- | :------- | :------------------------- |
 | biger than int | ./p 1 2147483648 | Error |
 | lower than int | ./p 1 -2147483649 | Error |
@@ -65,6 +65,18 @@ pa
 | 1 integer | ./p 42 | *nothing* |
 | string contain valid | ARG="-1 2 -3"; ./p $ARG | rra |
 | string contain invalid | ARG="-1 b 2 -3"; ./p $ARG | Error |
+
+## Performance
+
+Random number arround 200 attempt in every case
+
+| case | average instruction|
+| :-------- |  :------------------------- |
+| 3 | <= 2 |
+| 4 | <= 7 |
+| 5 | <= 10 |
+| ~100 | 669 |
+| ~500 | 4554 |
 
 
 ## References
