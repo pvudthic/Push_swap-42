@@ -1,4 +1,7 @@
 
+![Logo](assets/42bangkok.jpg)
+
+
 # Push_swap
 
 This project about sorting algorithm by using 2 stacks data structure and set of instruction that giving (ex. push, swap). Purpose of this project is finding the most efficiency way to get less possible **'instruction'**
@@ -9,7 +12,7 @@ This project about sorting algorithm by using 2 stacks data structure and set of
 
 | Language     | Limitation            | Doc | Develop on |
 | :-------- | :------- | :------------------------- | :--- |
-| C | 42 school rule | [subject](subject/en.subject.pdf) | Mac |
+| C | 42 school rule | [subject](assets/en.subject.pdf) | Mac |
 
 ### Installation
 
