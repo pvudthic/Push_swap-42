@@ -18,11 +18,6 @@ This project about sorting algorithm by using 2 stacks data structure and set of
 - [Algorithm](https://github.com/pvudthic/Push_swap42/wiki/Algorithm)
 - [Flow chart](https://github.com/pvudthic/Push_swap42/wiki/Flow-Chart)
 - [Sort Checker](https://github.com/pvudthic/Push_swap42/wiki/Sort-checker)
-
-### Tools
-| Manual Random number     | Tester            | Visualizer | Algorithm comparison |
-| :------------------------------------------------------------------------------------------ | :------------------- | :--------------------------- | :---------------------------- |
-| [link](https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php) | [link]() | [link](https://github.com/Niimphu/push_swap_visualiser) | [link](https://www.toptal.com/developers/sorting-algorithms) |
   
 ## Installation
 
@@ -78,6 +73,10 @@ Random number arround 200 attempt in every case
 | ~100 | 669 |
 | ~500 | 4554 |
 
+### Tools
+| Manual Random number     | Tester            | Visualizer | Algorithm comparison |
+| :------------------------------------------------------------------------------------------ | :------------------- | :--------------------------- | :---------------------------- |
+| [link](https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php) | [link]() | [link](https://github.com/Niimphu/push_swap_visualiser) | [link](https://www.toptal.com/developers/sorting-algorithms) |
 
 ## References
 - [Push Swap in less than 4200 operations](https://medium.com/@ulysse.gerkens/push-swap-in-less-than-4200-operations-c292f034f6c0)
