@@ -6,19 +6,25 @@
 
 This project about sorting algorithm by using 2 stacks data structure and set of instruction that giving (ex. push, swap). Purpose of this project is finding the most efficiency way to get less possible **'instruction'**
 
-| Language     | Limitation            | Doc | Develop on |
-| :-------- | :------- | :------------------------- | :--- |
-| C | 42 school rule | [subject](assets/en.subject.pdf) | Mac |
+| Language     | Limitation            | Doc | Develop on | Score |
+| :-------- | :------- | :------------------------- | :--- | :--- |
+| C | 42 school rule | [subject](assets/en.subject.pdf) | Mac | [??%](https://projects.intra.42.fr/42cursus-push_swap/pvudthic) |
 
 (***notes*** *All of this repository information is used for school evaluation and disseminate knowledge only*)
 
 ## Understanding project
 
+- [About project](https://github.com/pvudthic/Push_swap42/wiki/About-project)
+- [Algorithm](https://github.com/pvudthic/Push_swap42/wiki/Algorithm)
 - [Flow chart](https://github.com/pvudthic/Push_swap42/wiki/Flow-Chart)
-- [Algorithm] (https://github.com/pvudthic/Push_swap42/wiki/Algorithm)
-- [Sort Checker] (https://github.com/pvudthic/Push_swap42/wiki/Sort-checker)
+- [Sort Checker](https://github.com/pvudthic/Push_swap42/wiki/Sort-checker)
 
-### Installation
+### Tools
+| Manual Random number     | Tester            | Visualizer | Algorithm comparison |
+| :------------------------------------------------------------------------------------------ | :------------------- | :--------------------------- | :---------------------------- |
+| [link](https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php) | [link]() | [link](https://github.com/Niimphu/push_swap_visualiser) | [link](https://www.toptal.com/developers/sorting-algorithms) |
+  
+## Installation
 
 - clone this repository
 ```bash
@@ -28,7 +34,8 @@ This project about sorting algorithm by using 2 stacks data structure and set of
 ```bash
   make
 ```
-### Usage/Examples
+
+## Usage/Examples
 
 - use program by ./push_swap [int number ...]
 ```bash
@@ -60,16 +67,11 @@ pa
 | string contain invalid | ARG="-1 b 2 -3"; ./p $ARG | Error |
 
 
+## References
+- [Push Swap in less than 4200 operations](https://medium.com/@ulysse.gerkens/push-swap-in-less-than-4200-operations-c292f034f6c0)
+- [push_swap 가이드](https://automatic-saltopus-34b.notion.site/push_swap-c15e62229b9541d78fadec4d6aae8b50)
 
-
-
-### Authors
+## Authors
 
 - [@pvudthic](https://github.com/pvudthic)
 - [@42intra](https://profile.intra.42.fr/users/pvudthic)
-
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
