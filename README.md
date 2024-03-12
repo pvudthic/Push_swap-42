@@ -76,7 +76,7 @@ Random number arround 200 attempt in every case
 ### Tools
 | Manual Random number     | Tester            | Visualizer | Algorithm comparison |
 | :------------------------------------------------------------------------------------------ | :------------------- | :--------------------------- | :---------------------------- |
-| [link](https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php) | [link]() | [link](https://github.com/Niimphu/push_swap_visualiser) | [link](https://www.toptal.com/developers/sorting-algorithms) |
+| [link](https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php) | [link](https://github.com/nunom4chado/Push-Swap-Tester) | [link](https://github.com/Niimphu/push_swap_visualiser) | [link](https://www.toptal.com/developers/sorting-algorithms) |
 
 ## References
 - [Push Swap in less than 4200 operations](https://medium.com/@ulysse.gerkens/push-swap-in-less-than-4200-operations-c292f034f6c0)
