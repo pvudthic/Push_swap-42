@@ -6,13 +6,13 @@
 
 This project about sorting algorithm by using 2 stacks data structure and set of instruction that giving (ex. push, swap). Purpose of this project is finding the most efficiency way to get less possible **'instruction'**
 
-
-
-
-
 | Language     | Limitation            | Doc | Develop on |
 | :-------- | :------- | :------------------------- | :--- |
 | C | 42 school rule | [subject](assets/en.subject.pdf) | Mac |
+
+### Abstract
+
+- [Flow chart](https://github.com/pvudthic/Push_swap42/wiki/Flow-Chart)
 
 ### Installation
 
