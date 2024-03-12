@@ -10,7 +10,7 @@ This project about sorting algorithm by using 2 stacks data structure and set of
 | :-------- | :------- | :------------------------- | :--- |
 | C | 42 school rule | [subject](assets/en.subject.pdf) | Mac |
 
-### Abstract
+### Understanding project
 
 - [Flow chart](https://github.com/pvudthic/Push_swap42/wiki/Flow-Chart)
 
