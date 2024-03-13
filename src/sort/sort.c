@@ -6,12 +6,11 @@
 /*   By: pvudthic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:24:27 by pvudthic          #+#    #+#             */
-/*   Updated: 2024/03/12 13:24:28 by pvudthic         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:09:57 by pvudthic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
-#include "debugger.h"
 
 int	range_size(t_stack *stack, int max_range)
 {
@@ -70,7 +69,6 @@ static int	position_partition(t_list *stack, int size, int pos, int m_range)
 	return (m_range + 2);
 }
 
-/*This should change to partition function*/
 static int	range_sort(t_list *ref, int max_range, int position)
 {
 	int		size;

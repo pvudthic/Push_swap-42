@@ -6,11 +6,35 @@
 /*   By: pvudthic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:23:41 by pvudthic          #+#    #+#             */
-/*   Updated: 2024/03/12 13:23:42 by pvudthic         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:04:59 by pvudthic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "instruction.h"
+
+static void	update_position(t_list *stack, char target)
+{
+	stack->top_a = stack->a;
+	stack->top_b = stack->b;
+	if (target == 'a')
+	{
+		if (stack->size_a == 2)
+			stack->bottom_a = stack->a->next;
+		else if (stack->size_a == 1)
+			stack->bottom_a = stack->a;
+		if (stack->size_b <= 1)
+			stack->bottom_b = stack->b;
+	}
+	else if (target == 'b')
+	{
+		if (stack->size_b == 2)
+			stack->bottom_b = stack->b->next;
+		else if (stack->size_b == 1)
+			stack->bottom_b = stack->b;
+		if (stack->size_a <= 1)
+			stack->bottom_a = stack->a;
+	}
+}
 
 void	do_pa(t_list *stack)
 {
@@ -24,16 +48,9 @@ void	do_pa(t_list *stack)
 		stack->a = tmp_stack;
 		if (show_output("pa\n", stack->show_output) == -1)
 			error_exit(stack);
-		stack->top_a = stack->a;
-		stack->top_b = stack->b;
 		stack->size_a += 1;
 		stack->size_b -= 1;
-		if (stack->size_a == 2)
-			stack->bottom_a = stack->a->next;
-		else if (stack->size_a == 1)
-			stack->bottom_a = stack->a;
-		if (stack->size_b <= 1)
-			stack->bottom_b = stack->b;
+		update_position(stack, 'a');
 	}
 	else
 		return ;
@@ -51,16 +68,9 @@ void	do_pb(t_list *stack)
 		stack->b = tmp_stack;
 		if (show_output("pb\n", stack->show_output) == -1)
 			error_exit(stack);
-		stack->top_a = stack->a;
-		stack->top_b = stack->b;
 		stack->size_a -= 1;
 		stack->size_b += 1;
-		if (stack->size_b == 2)
-			stack->bottom_b = stack->b->next;
-		else if (stack->size_b == 1)
-			stack->bottom_b = stack->b;
-		if (stack->size_a <= 1)
-			stack->bottom_a = stack->a;
+		update_position(stack, 'b');
 	}
 	else
 		return ;

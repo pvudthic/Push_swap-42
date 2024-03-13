@@ -6,7 +6,7 @@
 /*   By: pvudthic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:24:10 by pvudthic          #+#    #+#             */
-/*   Updated: 2024/03/12 13:24:11 by pvudthic         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:19:53 by pvudthic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	partition_pos1(t_list *stack, int size, int max_range)
 {
 	int	pivot_1;
 	int	pivot_2;
+	int	lowest;
 
-	pivot_1 = minimum(stack->a, size) + (size / 3);
-	pivot_2 = minimum(stack->a, size) + (size / 3) * 2;
+	lowest = minimum(stack->a, size);
+	pivot_1 = lowest + (size / 3);
+	pivot_2 = lowest + (size / 3) * 2;
 	while (size)
 	{
 		if (stack->top_a->nb < pivot_2)
@@ -38,9 +40,11 @@ void	partition_pos2(t_list *stack, int size, int max_range)
 {
 	int	pivot_1;
 	int	pivot_2;
+	int	lowest;
 
-	pivot_1 = minimum(stack->b, size) + (size / 3);
-	pivot_2 = minimum(stack->b, size) + (size / 3) * 2;
+	lowest = minimum(stack->b, size);
+	pivot_1 = lowest + (size / 3);
+	pivot_2 = lowest + (size / 3) * 2;
 	while (size)
 	{
 		if (stack->top_b->nb < pivot_2)
@@ -60,9 +64,11 @@ void	partition_pos3(t_list *stack, int size, int max_range)
 {
 	int	pivot_1;
 	int	pivot_2;
+	int	lowest;
 
-	pivot_1 = minimum(stack->range_stack, size) + (size / 3);
-	pivot_2 = minimum(stack->range_stack, size) + (size / 3) * 2;
+	lowest = minimum(stack->range_stack, size);
+	pivot_1 = lowest + (size / 3);
+	pivot_2 = lowest + (size / 3) * 2;
 	while (size)
 	{
 		if (stack->bottom_a->nb < pivot_2)
@@ -82,9 +88,11 @@ void	partition_pos4(t_list *stack, int size, int max_range)
 {
 	int	pivot_1;
 	int	pivot_2;
+	int	lowest;
 
-	pivot_1 = minimum(stack->range_stack, size) + (size / 3);
-	pivot_2 = minimum(stack->range_stack, size) + (size / 3) * 2;
+	lowest = minimum(stack->range_stack, size);
+	pivot_1 = lowest + (size / 3);
+	pivot_2 = lowest + (size / 3) * 2;
 	while (size)
 	{
 		if (stack->bottom_b->nb < pivot_2)
