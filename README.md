@@ -59,6 +59,8 @@ pa
 | 1 integer | ./p 42 | *nothing* |
 | string contain valid | ARG="-1 2 -3"; ./p $ARG | rra |
 | string contain invalid | ARG="-1 b 2 -3"; ./p $ARG | Error |
+| >1 string valid | ./p "3 4 -1" "7 2 0" | pb .. |
+| >1 string invalid | ./p "3 4 -1" "4 2 0" | Error |
 
 ## Performance
 
