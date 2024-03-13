@@ -15,7 +15,7 @@ This project about sorting algorithm by using 2 stacks data structure and set of
 ## Understanding project
 
 - [About project](https://github.com/pvudthic/Push_swap42/wiki/About-project)
-- [Algorithm](https://github.com/pvudthic/Push_swap42/wiki/Guide)
+- [Guide](https://github.com/pvudthic/Push_swap42/wiki/Guide)
 - [Flow chart](https://github.com/pvudthic/Push_swap42/wiki/Flow-Chart)
   
 ## Installation
