@@ -83,5 +83,5 @@ Random number arround 200 attempt in every case
 
 ## Authors
 
-- [@pvudthic](https://github.com/pvudthic)
+- [@Github](https://github.com/pvudthic)
 - [@42intra](https://profile.intra.42.fr/users/pvudthic)
