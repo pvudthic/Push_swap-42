@@ -10,6 +10,11 @@ This project about sorting algorithm by using 2 stacks data structure and set of
 | :-------- | :------- | :------------------------- | :--- | :--- |
 | C | 42 school rule | [subject](assets/en.subject.pdf) | Mac | [??%](https://projects.intra.42.fr/42cursus-push_swap/pvudthic) |
 
+### Tools
+| Manual Random number     | Tester            | Visualizer | Algorithm comparison |
+| :------------------------------------------------------------------------------------------ | :------------------- | :--------------------------- | :---------------------------- |
+| [link](https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php) | [link](https://github.com/nunom4chado/Push-Swap-Tester) | [link](https://github.com/Niimphu/push_swap_visualiser) | [link](https://www.toptal.com/developers/sorting-algorithms) |
+
 (***notes*** *All of this repository information is used for school evaluation and disseminate knowledge only*)
 
 ## Understanding project
@@ -73,11 +78,6 @@ Random number arround 200 attempt in every case
 | 5 | <= 10 |
 | ~100 | 669 |
 | ~500 | 4554 |
-
-### Tools
-| Manual Random number     | Tester            | Visualizer | Algorithm comparison |
-| :------------------------------------------------------------------------------------------ | :------------------- | :--------------------------- | :---------------------------- |
-| [link](https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php) | [link](https://github.com/nunom4chado/Push-Swap-Tester) | [link](https://github.com/Niimphu/push_swap_visualiser) | [link](https://www.toptal.com/developers/sorting-algorithms) |
 
 ## References
 - [Push Swap in less than 4200 operations](https://medium.com/@ulysse.gerkens/push-swap-in-less-than-4200-operations-c292f034f6c0)
